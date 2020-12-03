@@ -16,7 +16,13 @@ const stream = doc.pipe(blobStream());
 // }
 
 // // draw some text
-// doc.fontSize(25).text("Here is some vector graphics...", 100, 80);
+doc
+  .font("Times-Roman")
+  .fontSize(25)
+
+  .text("History of free and open-source software", 0, 0);
+
+doc.fontSize(10).text("From Wikipedia, the free encyclopedia", 160, 80);
 
 // // some vector graphics
 // doc.save().moveTo(100, 150).lineTo(100, 250).lineTo(200, 250).fill("#FF3300");
