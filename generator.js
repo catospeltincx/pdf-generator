@@ -4,8 +4,24 @@ import blobStream from "blob-stream";
 //const blobStream = require("blob-stream");
 
 const iframe = document.querySelector("iframe");
-const doc = new PDFDocument();
+const doc = new PDFDocument({
+  size: [561, 793],
+});
 const stream = doc.pipe(blobStream());
+
+//probeer
+const titel1 = doc.font("Times-Roman").fontSize(30);
+
+const brood1 = doc.font("Courier").fontSize(12);
+
+// // draw some text
+doc.text("History of free and open-source software", {
+  font: titel1,
+});
+
+doc.text("From Wikipedia, the free encyclopedia", {
+  font: brood1,
+});
 
 // for (let i = 0; i < 100; i++) {
 //   if (i > 0) {
@@ -14,15 +30,6 @@ const stream = doc.pipe(blobStream());
 
 //   doc.fontSize(25).text(`Page ${i + 1}...`, 100, 80);
 // }
-
-// // draw some text
-doc
-  .font("Times-Roman")
-  .fontSize(25)
-
-  .text("History of free and open-source software", 0, 0);
-
-doc.fontSize(10).text("From Wikipedia, the free encyclopedia", 160, 80);
 
 // // some vector graphics
 // doc.save().moveTo(100, 150).lineTo(100, 250).lineTo(200, 250).fill("#FF3300");
