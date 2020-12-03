@@ -7,13 +7,13 @@ const iframe = document.querySelector("iframe");
 const doc = new PDFDocument();
 const stream = doc.pipe(blobStream());
 
-for (let i = 0; i < 100; i++) {
-  if (i > 0) {
-    doc.addPage();
-  }
+// for (let i = 0; i < 100; i++) {
+//   if (i > 0) {
+//     doc.addPage();
+//   }
 
-  doc.fontSize(25).text(`Page ${i + 1}...`, 100, 80);
-}
+//   doc.fontSize(25).text(`Page ${i + 1}...`, 100, 80);
+// }
 
 // // draw some text
 // doc.fontSize(25).text("Here is some vector graphics...", 100, 80);
