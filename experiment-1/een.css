@@ -1,0 +1,8 @@
+.experiment_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.experiment_titel {
+  color: red;
+}
