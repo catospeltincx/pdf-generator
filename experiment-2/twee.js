@@ -21,6 +21,7 @@ const stream = doc.pipe(blobStream());
 doc
   .fontSize(10)
   .font("Times-Roman")
+  .text("", 55, 55)
   .text("History of free and open-source software", {
     indent: 0,
   })

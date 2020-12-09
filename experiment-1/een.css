@@ -6,3 +6,11 @@
 .experiment_titel {
   color: red;
 }
+
+ol {
+  list-style-type: none;
+}
+
+li {
+  list-style-type: none;
+}
