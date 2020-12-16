@@ -7,7 +7,10 @@ const iframe = document.querySelector("iframe");
 const doc = new PDFDocument({
   size: [421, 595],
 });
+
 const stream = doc.pipe(blobStream());
+
+// doc.image("misloper-01.png", 0, 15, { width: 300 });
 
 // end and display the document in the iframe to the right
 doc.end();
