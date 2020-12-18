@@ -1,0 +1,16 @@
+[
+  {
+    "brand": "Gazelle",
+    "type": "Deore Max",
+    "size": "XL",
+    "price": 1533,
+    "image": "gazelle.jpg"
+  },
+  {
+    "brand": "Fahrad Manufaktur",
+    "type": "Rahdenhosen",
+    "size": "M",
+    "price": 4654,
+    "image": "rahdenhosen.jpg"
+  }
+]
