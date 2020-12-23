@@ -15,6 +15,11 @@
     "pdfkit": "0.11.0"
   },
   "devDependencies": {
-    "parcel-bundler": "1.12.4"
+    "parcel-bundler": "1.12.4",
+    "parcel-plugin-static-files-copy": "2.5.0"
+  },
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
   }
 }
