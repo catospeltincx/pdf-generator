@@ -3,7 +3,7 @@ import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
 import { loadImage } from "../utils/image";
 
-console.log(PDFDocument)
+console.log(PDFDocument);
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
@@ -31,15 +31,14 @@ async function makePdf() {
 
   const res = await fetch("/data/bikes.json");
   const bikes = await res.json();
-  console.log(bikes)
+  console.log(bikes);
   for (const bike of bikes) {
-    const bikeImage = await loadImage('/images/bikes/' + bike.image);
+    const bikeImage = await loadImage("/images/bikes/" + bike.image);
     doc.image(bikeImage, { width: 100 });
     doc.fontSize(24).text(bike.type);
     doc.fontSize(10).text(bike.brand);
-    doc.text('€ ' + bike.price);
+    doc.text("€ " + bike.price);
   }
-
 
   // end and display the document in the iframe to the right
   doc.end();
