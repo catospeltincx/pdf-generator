@@ -1,15 +1,19 @@
 body {
-  background-color: white;
+  background-color: rgb(57, 113, 172);
   margin: 25px;
 }
 
 a {
-  color: red;
+  color: rgb(85, 0, 255);
   margin: 2px;
 }
 
-p {
+a:hover {
   color: red;
+}
+
+p {
+  color: rgb(0, 0, 0);
   margin: 0;
 }
 
