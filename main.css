@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(57, 113, 172);
+  background-color: rgb(116, 116, 116);
   margin: 25px;
 }
 
@@ -20,10 +20,11 @@ p {
 header {
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
 }
 
 .screenshot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 10px;
 }

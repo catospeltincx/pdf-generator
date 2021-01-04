@@ -12,7 +12,7 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  const res = await fetch("/data/pagehistory/history.json");
+  const res = await fetch("/data/pagehistory/history1.json");
   const historys = await res.json();
 
   doc.text("", 25, 25);

@@ -1,0 +1,124 @@
+ [ 
+  {
+    "time":"10:42",
+    "day":"7",
+    "month":"Au",
+    "year":"2002",
+    "bytes":"+ 296",
+    "plus":"Publishing is the activity of producing and distributing books, magazines and other printed material. It is more generally used to refer to the distribution of information to many people; for example 'internet publishing' refers to making information available via the Internet.",
+    "contributor":"Mswake"
+  },
+
+  {
+    "time":"08:45",
+    "day":"2",
+    "month":"Nov",
+    "year":"2002",
+    "bytes":"+ 16",
+    "plus":"s, newspaper",
+    "contributor":"Dmlo78"
+  },
+  {
+    "time":"13:12",
+    "day":"9",
+    "month":"Nov",
+    "year":"2002",
+    "bytes":"+ 28",
+    "plus":"See also: Mass media",
+    "contributor":"Olivier"
+  },
+  { "time":"13:19",
+    "day":"9",
+    "month":"Nov",
+    "year":"2002",
+    "bytes":"+ 15",
+    "plus":", publisher",
+    "contributor":"Olivier"
+  },
+  { "time":"01:02",
+    "day":"26",
+    "month":"Aug",
+    "year":"2003",
+    "bytes":"+ 76",
+    "min":"[...] producing and [...] . It is more generally used to refer to the distribution of [...] many people; for [...] refers to [...]",
+    "plus":"[...], or [...], [...] the public. For [...] is [...]",
+    "contributor":"Michael Hardy"
+  },
+  { "time":"01:02",
+    "day":"26",
+    "month":"Aug",
+    "year":"2003",
+    "bytes":"+ 76",
+    "min":"[...] producing and [...] . It is more generally used to refer to the distribution of [...] many people; for [...] refers to [...]",
+    "plus":"[...], or [...], [...] the public. For [...] is [...]",
+    "summary":"Publishing is distributing; printing books that sit in a warehouse and never get distributed to the public is not publishing.",
+    "contributor":"Michael Hardy"
+  },
+  { "time":"01:02",
+    "day":"26",
+    "month":"Aug",
+    "year":"2003",
+    "bytes":"+ 0",
+    "plus":"[self]-[publishing]",
+    "contributor":"Michael Hardy"
+  },
+
+  { "time":"04:15",
+    "day":"22",
+    "month":"Sept",
+    "year":"2003",
+    "bytes":"+ 25",
+    "plus":"[...], academic publishing [...]",
+    "contributor":"Rbellin"
+  },
+  
+  { "time":"20:47",
+    "day":"27",
+    "month":"Nov",
+    "year":"2003",
+    "bytes":"+ 25",
+    "plus":"[...] , Open-access publishing",
+    "contributor":"62.134.120.166"
+  },
+  
+  { "time":"12:05",
+    "day":"28",
+    "month":"Nov",
+    "year":"2003",
+    "bytes":"+ 17",
+    "min":"See also: desktop publishing, self-publishing, mass media, academic publishing, publisher, word processing, writing, Open-access publishing",
+    "plus":"See also: - desktop publishing - self-publishing - mass media - academic publishing, publisher - word processing - writing - Open-access publishing",
+    "contributor":"195.71.52.188"
+  },
+
+  { "time":"14:55",
+    "day":"19",
+    "month":"Jan",
+    "year":"2004",
+    "bytes":"+ 83",
+    "plus":"- writing documentation - proofreading - editing - sub-editing",
+    "contributor":"81.203.105.99"
+  },
+
+  { "time":"14:56",
+    "day":"19",
+    "month":"Jan",
+    "year":"2004",
+    "bytes":"- 29",
+    "min":"- writing documentation",
+    "contributor":"81.203.105.99"
+  },
+
+  { "time":"07:24",
+    "day":"7",
+    "month":"Feb",
+    "year":"2004",
+    "bytes":"+ 13",
+    "min":"distributing",
+    "plus":"producing and circulating",
+    "summary":"changed definition",
+    "contributor":"Flobster"
+  }
+]
+
+
