@@ -1,29 +1,29 @@
 [
     {
         "lnk":"Publishing",
-        "txt1":"Publishing is the activity of making information, literature, music, software and other content available to the public for sale or for free. Traditionally, the term refers to the distribution of printed works, such as books, newspapers, and magazines. With the advent of digital information systems, the scope has expanded to include"
+        "txt1":"is the activity of making information, literature, music, software and other content available to the public for sale or for free. Traditionally, the term refers to the distribution of printed works, such as books, newspapers, and magazines. With the advent of digital information systems, the scope has expanded to include"
     },
 
     {
         "lnk":"Electronic publishing",
-        "txt1":"Electronic publishing (also referred to as publishing, digital publishing, or online publishing) includes the digital publication of e-books, digital magazines, and the development of"
+        "txt1":"(also referred to as publishing, digital publishing, or online publishing) includes the digital publication of e-books, digital magazines, and the development of"
     },
 
     {
         "lnk":"Digital library",
-        "txt1":"A digital library, digital repository, or digital collection, is an online database of digital objects that can include text, still images, audio, video, digital documents, or other digital media formats. Objects can consist of digitized content like print or photographs, as well as originally produced digital content like word processor files or social media posts. In addition to storing content, digital libraries provide means for organizing, searching, and retrieving the content contained in the collection. Digital libraries can vary immensely in size and scope, and can be maintained by individuals or organizations.[1] The digital content may be stored locally, or accessed remotely via computer networks. These information retrieval systems are able to exchange information with each other through interoperability and sustainability.",
+        "txt1":", digital repository, or digital collection, is an online database of digital objects that can include text, still images, audio, video, digital documents, or other digital media formats. Objects can consist of digitized content like print or photographs, as well as originally produced digital content like word processor files or social media posts. In addition to storing content, digital libraries provide means for organizing, searching, and retrieving the content contained in the collection. Digital libraries can vary immensely in size and scope, and can be maintained by individuals or organizations.[1] The digital content may be stored locally, or accessed remotely via computer networks. These information retrieval systems are able to exchange information with each other through interoperability and sustainability.",
         "tit1":"History",
         "txt2":"The early history of digital libraries is not well documented, but several key thinkers are connected to the emergence of the concept.[3] Predecessors include Paul Otlet and Henri La Fontaine's Mundaneum, an attempt begun in 1895 to gather and systematically catalogue the world's knowledge, with the hope of bringing about world peace."
     },
 
     {
         "lnk":"Mundaneum",
-        "txt1":"The Mundaneum was an institution which aimed to gather together all the world's knowledge and classify it according to a system developed called the Universal Decimal Classification."
+        "txt1":"was an institution which aimed to gather together all the world's knowledge and classify it according to a system developed called the Universal Decimal Classification."
     },
 
     {
         "lnk":"Universal Decimal Classification",
-        "txt1":"The Universal Decimal Classification (UDC) is a bibliographic"
+        "txt1":"(UDC) is a bibliographic"
     },
 
     {
@@ -50,17 +50,17 @@
 
     {
         "lnk":"block quotation",
-        "txt1":"A block quotation (also known as a long quotation or extract) is a quotation in a written document that is set off from the main text as a paragraph, or block of text, and typically distinguished visually using indentation and a different"
+        "txt1":"(also known as a long quotation or extract) is a quotation in a written document that is set off from the main text as a paragraph, or block of text, and typically distinguished visually using indentation and a different"
     },
 
     {
         "lnk":"typeface",
-        "txt1":"A typeface is the design of lettering[1] that can include variations, such as extra bold, bold, regular, light, italic, condensed, extended, etc. Each of these variations of the typeface is a font. There are thousands of different typefaces in existence, with new ones being developed constantly. The art and craft of designing typefaces is called type design. Designers of typefaces are called type designers and are often employed by type foundries. In digital typography, type designers are sometimes also called font developers or font designers. Every typeface is a collection of glyphs, each of which represents an individual letter, number, punctuation mark, or other symbol. The same glyph may be used for"
+        "txt1":"is the design of lettering that can include variations, such as extra bold, bold, regular, light, italic, condensed, extended, etc. Each of these variations of the typeface is a font. There are thousands of different typefaces in existence, with new ones being developed constantly. The art and craft of designing typefaces is called type design. Designers of typefaces are called type designers and are often employed by type foundries. In digital typography, type designers are sometimes also called font developers or font designers. Every typeface is a collection of glyphs, each of which represents an individual letter, number, punctuation mark, or other symbol. The same glyph may be used for"
     },
 
     {
         "lnk":"Character (symbol)",
-        "txt1":"A character is a semiotic sign or symbol, or a glyph – typically a letter, a numerical digit, an"
+        "txt1":"is a semiotic sign or symbol, or a glyph – typically a letter, a numerical digit, an"
     },
 
     {
@@ -70,12 +70,77 @@
 
     {
         "lnk":"Idea",
-        "txt1":"In philosophy, ideas are usually taken as mental representational images of some object. Ideas can also be abstract concepts that do not present as mental images.[1] Many philosophers have considered ideas to be a fundamental ontological category of being. The capacity to"
+        "txt1":" are usually taken as mental representational images of some object. Ideas can also be abstract concepts that do not present as mental images.[1] Many philosophers have considered ideas to be a fundamental ontological category of being. The capacity to create."
     },
 
     {
-        "lnk":"Create",
-        "txt1":""
+        "lnk":"Creativity",
+        "txt1":"is a phenomenon whereby something somehow new and somehow valuable is formed. The created item may be intangible (such as an idea, a scientific theory, a musical composition, or a"
     },
+
+    {
+        "lnk":"Joke",
+        "txt1":"is a display of humour in which words are used within a specific and well-defined narrative structure to make people laugh and is usually not meant to be taken seriously (even when being used to implicitly set social norms and boundaries on something like sexuality).[1] It takes the form of a story, usually with dialogue, and ends in a punch line. It is in the punch line that the audience becomes aware that the story contains a second, conflicting meaning. This can be done using a"
+    },
+
+    {
+        "lnk":"Pun",
+        "txt1":"also called paronomasia, is a form of word play that exploits multiple meanings of a term, or of similar-sounding words, for an intended humorous or rhetorical effect. These ambiguities can arise from the intentional use of homophonic, homographic, metonymic, or figurative language. A pun differs from a"
+    },
+
+    {
+        "lnk":"Malapropism",
+        "txt1":"(also called a malaprop, acyrologia, or Dogberryism) is the mistaken use of an incorrect word in place of a word with a similar sound, resulting in a nonsensical, sometimes humorous"
+    },
+
+    {
+        "lnk":"Utterance",
+        "txt1":"is the smallest unit of speech. It is a continuous piece of speech beginning and ending with a clear pause. In the case of oral languages, it is generally, but not always, bounded by silence. Utterances do not exist in written language, however- only their representations do. They can be represented and delineated in written language in many ways. In oral/spoken language, utterances have several characteristics such as paralinguistic features, which are aspects of speech such as"
+    },
+
+    {
+        "lnk":"Ellipsis",
+        "txt1":"..., . . ., or (in Unicode) …, also known informally as dot-dot-dot, is a series of (usually three) dots that indicates an intentional omission of a word, sentence, or whole section from a text without altering its original meaning.[1] The word (plural ellipses) originates from the Ancient Greek: ἔλλειψις, élleipsis meaning 'leave out'.[1]Opinions differ as to how to render ellipses in printed material. According to The Chicago Manual of Style, it should consist of three periods, each separated from its neighbor by a"
+    },
+
+    {
+        "lnk":"Non-breaking space",
+        "txt1":",  , also called no-break space, non-breakable space (NBSP), required space,[1] hard space, or fixed space,[note 1] is a space character that prevents an automatic line break at its position. In some formats, including HTML, it also prevents consecutive"
+    },
+
+    {
+        "lnk":"Whitespace character",
+        "txt1":"is any character or series of characters that represent horizontal or vertical space in typography. When rendered, a whitespace character does not correspond to a visible mark, but typically does occupy an area on a page. For example, the common whitespace symbol U+0020   SPACE (also ASCII 32) represents a blank space punctuation character in text, used as a"
+    },
+
+    {
+        "lnk":"Word divider",
+        "txt1":"is a glyph that separates written words. In languages which use the Latin, Cyrillic, and Arabic alphabets, as well as other scripts of Europe and West Asia, the word divider is a blank space, or whitespace. This convention is spreading, along with other aspects of European punctuation, to Asia and Africa, where words are usually written without word separation.[1][better source needed] In character encoding,"
+    },
+
+    {
+        "lnk":"Word segmentation",
+        "txt1":"is the process of dividing written text into meaningful units, such as words, sentences, or topics. The term applies both to mental processes used by humans when reading text, and to artificial processes implemented in computers, which are the subject of"
+    },
+
+    {
+        "lnk":"Natural language processing",
+        "txt1":"(NLP) is a subfield of linguistics, computer science, and artificial intelligence concerned with the interactions between computers and human language, in particular how to program computers to process and analyze large amounts of"
+    },
+
+    {
+        "lnk":"Natural language",
+        "txt1":"is any language that has evolved naturally in humans through use and repetition without conscious planning or premeditation. Natural languages can take different forms, such as speech or signing. They are distinguished from constructed and formal languages such as those used to program computers or to study logic.",
+        "tit1":"Defining natural language",
+        "txt2":"Though the exact definition varies between scholars, natural language can broadly be defined in contrast to artificial or"
+    },
+
+    {
+        "lnk":"Constructed languages ",
+        "txt1":"is any language that has evolved naturally in humans through use and repetition without conscious planning or premeditation. Natural languages can take different forms, such as speech or signing. They are distinguished from constructed and formal languages such as those used to program computers or to study logic.",
+        "tit1":"Defining natural language",
+        "txt2":""
+    }
+    
     
 ]

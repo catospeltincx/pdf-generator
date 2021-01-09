@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-//import { loadImage } from "../utils/image";
+import { loadImage } from "../utils/image";
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
@@ -11,20 +11,32 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  //link-loop
+  //img-loop
+  // const get = await fetch("/data/firstlink/firstlink.json");
+  // const images = await get.json();
+
+  // for (const image of images) {
+  //   const exactImage = await loadImage(
+  //     "/public/images/first-link/" + image.img
+  //   );
+  //   doc.image(exactImage);
+  // }
+
+  //text-loop
 
   const res = await fetch("/data/firstlink/firstlink.json");
   const links = await res.json();
 
   doc.text("READ UNTIL THE FIRST LINK");
   doc.moveDown();
-  doc.font("Times-Roman").fontSize(13);
+  doc.font("Times-Roman").fontSize(12);
 
   for (const link of links) {
     doc.text(link.link);
     doc.text(link.text, {
       oblique: "yes",
     });
+
     doc.moveDown();
   }
 
