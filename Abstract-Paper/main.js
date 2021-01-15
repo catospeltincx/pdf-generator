@@ -46,7 +46,7 @@ async function makePdf() {
   tit("Free and Open Source Software");
   tit("& Boek ontwerp");
   doc.moveDown();
-  tit("1 — ");
+  tit("1 — Introductie tot Free and open-source software");
   brood(
     "Vorig jaar begeleidde Gijs de Heij een projectweek voor Bachelor 2 en 3 Grafische Vormgeving. Hij is een Open-source grafisch ontwerper en aangesloten bij Open Source Publishing. OSP is een groep geïnteresseerd in grafisch ontwerp, typografie en development. Op hun website presenteren ze waar ze voor staan, welke tools ze gebruiken en maken, hoe het proces verloopt voor elk project en welk grafisch werk daaruit voort komt."
   );
@@ -71,31 +71,31 @@ async function makePdf() {
   caption("in Bau, Design College of Barcelona");
   doc.moveDown();
   brood(
-    "Naast de open werkmethode die F/OSS met zich meebrengt is ook de gemeenschap die wordt samengebracht door deze manier van werken waardevol. Naarmate ik verder zoek kom ik verschillende namen, praktijken en projecten tegen. Een groot deel daarvan in Brussel gevestigd: Constant vzw, Lorraine Furter, Luuse, OSP, Femke Snelting, … Maar ook buiten België: Julien Deswaef, Manuel Schmalstieg, Ana Isabel Carvalho, … Van deze collectieven en personen zijn er veel met elkaar gelinkt. Ook wordt er jaarlijks in een verschillende stad een Libre Graphics Meeting georganiseerd. Libre Graphics staat voor grafisch ontwerp binnen de context van FOSS. Het is niet één groep die zo werkt. Het is een visie die een heel netwerk van mensen deelt."
+    "Naast de open werkmethode die F/OSS met zich meebrengt is ook de gemeenschap die wordt samengebracht door deze manier van werken waardevol. Naarmate ik verder zoek kom ik verschillende namen, praktijken en projecten tegen. Een groot deel daarvan in Brussel gevestigd: Constant vzw, Lorraine Furter, Luuse, OSP, Femke Snelting, … Maar ook buiten België: Julien Deswaef, Manuel Schmalstieg, Ana Isabel Carvalho … Van deze collectieven en personen zijn er veel met elkaar gelinkt. Ook wordt er jaarlijks in een verschillende stad een Libre Graphics Meeting georganiseerd. Libre Graphics staat voor grafisch ontwerp binnen de context van FOSS. Het is niet één groep die zo werkt. Een heel netwerk van mensen deelt deze visie."
   );
   doc.moveDown();
-  tit("2 — ");
+  tit("2 — Indesign");
   brood(
-    "Tijdens de workshop-week (waar ik het eerder over had) toonde de Heij een aantal van zijn projecten. Éen daarvan was een gecodeerde magazine. Hij had een publicatie ontworpen in code. Niet in Indesign."
+    "Tijdens de workshopweek (waar ik het eerder over had) toonde de Heij een aantal van zijn projecten. Een daarvan was een gecodeerde magazine. Hij had een publicatie ontworpen in code, niet in Indesign."
   );
   brood(
     "Ik dacht aan de moeilijkheden die ik ervaar tijdens het werken in Indesign. Of het zijn eerder de gemakken die het me moeilijk maken. Omdat de hoeveelheid aan opties zo groot is, raak ik makkelijk afgeleid door details. Terwijl ik die, in een beginfase van een ontwerp, niet zo belangrijk vind. De omgeving van deze tool zorgt ervoor dat ik spread per spread ontwerp. Hierdoor vind ik het moeilijk overzicht te houden op iets wat ik maak en eindig ik met een onzuivere blik en eindeloze documenten vol schetsen waarvan ik niet veel goed vind."
   );
   brood(
-    "Wanneer je al coderend ontwerpt is het praktisch om eerst een idee te bedenken dat het zicht van twee naasteenstaande pagina’s overstijgt. Omdat ongeveer alles mogelijk is als je zelf codeert, moet je voor je begint weten wat je plan is."
+    "Wanneer je al coderend ontwerpt is het praktisch om eerst een idee te bedenken dat het zicht van twee aanliggende pagina’s overstijgt. Omdat ongeveer alles mogelijk is als je zelf codeert, moet je voor je begint weten wat je plan is."
   );
   doc.moveDown();
-  tit("3 — ");
+  tit("3 — Web <-> Print ");
   brood(
     "Ik las Post-Digital Print, The Mutation of Publishing since 1894. Het boek werd geschreven door Alessandro Ludovico en in 2012 uitgebracht. Het gaat over print en de plek ervan in de digitale wereld van nu. Over waarom het geprinte boek al zoveel keren werd doodverklaard, maar nog steeds niet dood is. Over de oereigenschappen van een geprint boek die best belangrijk voor ons blijken te zijn: pagina’s omdraaien, de mogelijkheid te noteren, hoeken omslaan, de geur… Deze fysieke kenmerken helpen ons iets te onthouden doordat ze ons fotografisch geheugen voeden. Een print, een boek brengt een concentratie met zich mee door de afwezigheid van hyperlinks, search bars en andere dienstige onderdelen van het internet die je vaak te snel kunnen doorverwijzen naar het volgende interessante onderwerp."
   );
   brood(
-    "Het boek van Ludovico, gaat over de samenvloeiing van het digitale en analoge, over het flexibele parcours dat print reeds heeft afgelegd en blijft afleggen. De gecodeerde magazine die Gijs de Heij vorig jaar meebracht is daar een voorbeeld van. Het is een geprint, analoog object dat in een digitale structuur bijeen werd gebracht."
+    "Het boek van Ludovico, gaat over de samenvloeiing van het digitale en analoge, over het flexibele parcours dat print reeds heeft afgelegd en blijft afleggen. Het gecodeerde magazine dat Gijs de Heij vorig jaar meebracht is daar een voorbeeld van. Het is een geprint, analoog object dat in een digitale structuur bijeen werd gebracht."
   );
   doc.moveDown();
   tit("4 — Beschrijving masterproef");
   brood(
-    "Om mijn vaardigheid in het ontwerpen van boeken en programmeren te ontwikkelen gebruik ik Wikipedia als data-bron om PDFs te genereren. Via deze weg ben ik aan het onderzoeken hoe digitale structuren er geprint uit kunnen zien. Ik ben geïnteresseerd in deze manier van naar boeken kijken. Wat er gebeurt wanneer de drukke netwerkstructuren van het web die je leesgedrag beïnvloeden op een onrustige manier worden gecombineerd met het rustige lineair gestructureerde medium van print. Wat er tot stand komt wanneer deze twee ‘werelden’ samen worden gebracht."
+    "Om mijn vaardigheid in het ontwerpen van boeken en programmeren te ontwikkelen gebruik ik Wikipedia als databron om pdf’s te genereren. Via deze weg ben ik aan het onderzoeken hoe digitale structuren er geprint uit kunnen zien. Ik ben geïnteresseerd in deze manier van naar boeken kijken. Wat er gebeurt wanneer de drukke netwerkstructuren van het web die je leesgedrag beïnvloeden op een onrustige manier worden gecombineerd met het rustige lineair gestructureerde medium van print. Wat er tot stand komt wanneer deze twee ‘werelden’ samen worden gebracht."
   );
   doc.moveDown();
   tit("5 — Beschrijving paper");
@@ -112,12 +112,12 @@ async function makePdf() {
     "Online giants als Google en Amazon merkten deze nood op en zijn er in geslaagd toegankelijk te lijken op het eerste zicht maar het niet te zijn. Je kan op Google Books publicaties raadplegen maar slechts een deel van de PDF bekijken. Om de hele versie te bezichtigen moet je het kopen."
   );
   brood(
-    "Vanuit de context van FOSS wordt dit anders benaderd. Een voorbeeld is The Internet Archive heeft een tool die boeken online beschikbaar maakt en rekent op individuele en collectieve initiatieven om een zo volledig mogelijk en gratis collectie aan te bieden."
+    "Vanuit de context van FOSS wordt dit anders benaderd. Een voorbeeld is The Internet Archive. Het heeft een tool die boeken online beschikbaar maakt en rekent op individuele en collectieve initiatieven om een zo volledig mogelijk en gratis collectie aan te bieden."
   );
   doc.moveDown();
   doc.text("Dit leidt mij tot mijn onderzoeksvraag:");
   cit(
-    "Wat is de bijdrage van de visie van Free and open source software tot het toegankelijk maken van vergeten geprinte uitgaven en wat is hierbij de rol van Libre Graphics?"
+    "Dit leidt mij tot mijn onderzoeksvraag: Wat is de bijdrage van de visie van Free and open source software tot het toegankelijk maken van vergeten geprinte uitgaven en wat is hierbij de rol van Libre Graphics?"
   );
 
   // end and display the document in the iframe to the right
