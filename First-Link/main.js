@@ -12,15 +12,13 @@ async function makePdf() {
   const stream = doc.pipe(blobStream());
 
   //img-loop
-  // const get = await fetch("/data/firstlink/firstlink.json");
-  // const images = await get.json();
+  const get = await fetch("/data/firstlink/image.json");
+  const images = await get.json();
 
-  // for (const image of images) {
-  //   const exactImage = await loadImage(
-  //     "/public/images/first-link/" + image.img
-  //   );
-  //   doc.image(exactImage);
-  // }
+  for (const image of images) {
+    const exactImage = await loadImage("/images/first-link/" + image.img);
+    doc.image(exactImage);
+  }
 
   //text-loop
 
