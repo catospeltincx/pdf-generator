@@ -11,7 +11,7 @@ async function makePdf() {
   const stream = doc.pipe(blobStream());
 
   //haalt de data uit de juiste json-file
-  const res = await fetch("/data/pagehistory/revision3.json");
+  const res = await fetch("/data/revision-chat.json");
   const histories = await res.json();
 
   //Ik begin bij de eerste versie van een Wikipedia pagina
@@ -33,19 +33,19 @@ async function makePdf() {
   //elke lijn = een box
   //elke loop dat de onderstaande forloop doet, komt op de plaats die deze lijnen omschrijft
   const boxes = [
-    { x: 35, y: 35, width: 100, height: 73 },
-    { x: 330, y: 130, width: 145, height: 73 },
-    { x: 35, y: 360, width: 145, height: 73 },
-    { x: 330, y: 590, width: 250, height: 73 },
+    { x: 5, y: 5, width: 64, height: 17 },
+    { x: 330, y: 130, width: 64, height: 73 },
+    { x: 35, y: 360, width: 64, height: 73 },
+    { x: 330, y: 590, width: 64, height: 73 },
   ];
 
   let boxIndex = 0;
 
   //cover
-  doc.fontSize(17).font("Times-Roman").text("Revisions of", 330, 35);
-  doc.text("        Internet Archive");
-  doc.moveTo(297, 0).lineTo(297, 842).dash(5, { space: 10 }).stroke();
-  doc.addPage();
+  // doc.fontSize(17).font("Times-Roman").text("Revisions of", 330, 35);
+  // doc.text("        Internet Archive");
+  // doc.moveTo(297, 0).lineTo(297, 842).dash(5, { space: 10 }).stroke();
+  // doc.addPage();
 
   for (const revision of doubledHistories) {
     const box = boxes[boxIndex];
@@ -53,45 +53,46 @@ async function makePdf() {
     //lay-out
 
     function editor(text) {
-      doc
-        .fontSize(14)
-        .font("Times-Roman")
-        .text(text, box.x + 10, box.y + 10);
+      doc.fontSize(7).font("Helvetica").text(text, box.x, box.y);
     }
 
     function date(text) {
       doc
-        .fontSize(14)
-        .font("Times-Roman")
-        .text(text, box.x + 10, box.y + 30);
+        .fontSize(7)
+        .font("Helvetica")
+        .text(text, box.x, box.y + 10);
     }
 
     function time(text) {
       doc
-        .fontSize(14)
-        .font("Times-Roman")
-        .text(text, box.x + 10, box.y + 50);
+        .fontSize(7)
+        .font("Helvetica")
+        .text(text, box.x, box.y + 20);
     }
 
     function description(text) {
       doc
-        .fontSize(14)
+        .fontSize(7)
         .font("Times-Roman")
-        .text(text, box.x, box.y + 90, { oblique: "yes" });
-    }
-
-    function brood(text) {
-      doc
-        .fontSize(12)
-        .font("Helvetica")
-        .text(text, box.x, box.y + 130, { width: 240 });
+        .text(text, box.x + 3, box.y + 50, { width: box.width });
     }
 
     //kaders
-    doc.rect(box.x, box.y, box.width, box.height).stroke();
+    doc
+      .rect(box.x, box.y + 45, box.width, box.height)
+      .lineWidth(0.5)
+      .stroke();
 
     //vouwlijn
-    doc.moveTo(297, 0).lineTo(297, 842).stroke();
+
+    //lijnen
+    doc.moveTo(74, 0).lineTo(74, 842).stroke();
+    doc.moveTo(149, 0).lineTo(149, 842).stroke();
+    doc.moveTo(223, 0).lineTo(223, 842).stroke();
+    doc.moveTo(298, 0).lineTo(298, 842).stroke();
+    doc.moveTo(372, 0).lineTo(372, 842).stroke();
+    doc.moveTo(446, 0).lineTo(446, 842).stroke();
+    doc.moveTo(521, 0).lineTo(521, 842).stroke();
 
     //inhoud kaders
     editor("by " + revision.editor);
@@ -100,8 +101,6 @@ async function makePdf() {
 
     //onder kaders
     description(" '" + revision.description + "' ");
-
-    brood(revision.added);
 
     boxIndex += 1;
     if (boxIndex >= boxes.length) {

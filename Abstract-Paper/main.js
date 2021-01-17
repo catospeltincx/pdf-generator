@@ -79,7 +79,12 @@ async function makePdf() {
     "Tijdens de workshopweek (waar ik het eerder over had) toonde de Heij een aantal van zijn projecten. Een daarvan was een gecodeerde magazine. Hij had een publicatie ontworpen in code, niet in Indesign."
   );
   brood(
-    "Ik dacht aan de moeilijkheden die ik ervaar tijdens het werken in Indesign. Of het zijn eerder de gemakken die het me moeilijk maken. Omdat de hoeveelheid aan opties zo groot is, raak ik makkelijk afgeleid door details. Terwijl ik die, in een beginfase van een ontwerp, niet zo belangrijk vind. De omgeving van deze tool zorgt ervoor dat ik spread per spread ontwerp. Hierdoor vind ik het moeilijk overzicht te houden op iets wat ik maak en eindig ik met een onzuivere blik en eindeloze documenten vol schetsen waarvan ik niet veel goed vind."
+    "Ik dacht aan de moeilijkheden die ik ervaar tijdens het werken in Indesign. Of het zijn eerder de gemakken die het me moeilijk maken. Omdat de hoeveelheid aan opties zo groot is, raak ik makkelijk afgeleid door details."
+  );
+  doc.addPage();
+  doc.text("", 35, 35);
+  brood(
+    "Terwijl ik die, in een beginfase van een ontwerp, niet zo belangrijk vind. De omgeving van deze tool zorgt ervoor dat ik spread per spread ontwerp. Hierdoor vind ik het moeilijk overzicht te houden op iets wat ik maak en eindig ik met een onzuivere blik en eindeloze documenten vol schetsen waarvan ik niet veel goed vind."
   );
   brood(
     "Wanneer je al coderend ontwerpt is het praktisch om eerst een idee te bedenken dat het zicht van twee aanliggende pagina’s overstijgt. Omdat ongeveer alles mogelijk is als je zelf codeert, moet je voor je begint weten wat je plan is."
@@ -108,6 +113,8 @@ async function makePdf() {
   brood(
     "Alessandro Ludovico vertelt in het vijfde hoofdstuk van zijn boek over de toegankelijkheid van print. Hij benoemt print als vertrouwd medium en benadrukt het belang ervan het openbaar te houden."
   );
+  doc.addPage();
+  doc.text("", 35, 35);
   brood(
     "Online giants als Google en Amazon merkten deze nood op en zijn er in geslaagd toegankelijk te lijken op het eerste zicht maar het niet te zijn. Je kan op Google Books publicaties raadplegen maar slechts een deel van de PDF bekijken. Om de hele versie te bezichtigen moet je het kopen."
   );
@@ -116,6 +123,7 @@ async function makePdf() {
   );
   doc.moveDown();
   doc.text("Dit leidt mij tot mijn onderzoeksvraag:");
+  doc.moveDown(0.5);
   cit(
     "Dit leidt mij tot mijn onderzoeksvraag: Wat is de bijdrage van de visie van Free and open source software tot het toegankelijk maken van vergeten geprinte uitgaven en wat is hierbij de rol van Libre Graphics?"
   );
