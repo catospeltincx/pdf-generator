@@ -16,6 +16,8 @@ p {
   margin: 0 0 0 0;
 }
 
+/* HEADER */
+
 header {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@ header {
 }
 
 .title {
-  color: rgba(0, 0, 0);
+  color: rgb(0, 87, 47);
   margin: -10px 0 0;
   font-family: "Oswald", sans-serif;
   font-size: 1.5rem;
@@ -35,6 +37,7 @@ header {
   font-family: "Times New Roman", Times, serif;
   font-size: 1rem;
   margin: 7px 0 7px 0;
+  max-width: 510px;
 }
 
 .tustit {
@@ -44,8 +47,12 @@ header {
   font-size: 1.5rem;
 }
 
+/* BODY */
+
 .screenshot-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 10px;
 }
+
+/* FOOTER */

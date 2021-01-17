@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-import { loadImage } from "../utils/image";
+//import { loadImage } from "../utils/image";
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
@@ -12,13 +12,13 @@ async function makePdf() {
   const stream = doc.pipe(blobStream());
 
   //img-loop
-  const get = await fetch("/data/firstlink/image.json");
-  const images = await get.json();
+  // const get = await fetch("/data/firstlink/image.json");
+  // const images = await get.json();
 
-  for (const image of images) {
-    const exactImage = await loadImage("/images/first-link/" + image.img);
-    doc.image(exactImage);
-  }
+  // for (const image of images) {
+  //   const exactImage = await loadImage("/images/first-link/" + image.img);
+  //   doc.image(exactImage);
+  //}
 
   //text-loop
 

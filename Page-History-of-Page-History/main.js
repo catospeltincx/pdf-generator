@@ -16,7 +16,7 @@ async function makePdf() {
   const historys = await res.json();
 
   doc.text("", 25, 25);
-  doc.fontSize(15).text("THE PAGE-HISTORY OF PAGE-HISTORY", {
+  doc.fontSize(15).text("PAGE-HISTORY OF PAGE-HISTORY", {
     align: "center",
   });
   doc.moveDown();
