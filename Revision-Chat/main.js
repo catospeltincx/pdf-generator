@@ -20,23 +20,27 @@ async function makePdf() {
   //deze code biedt een structuur om dit te visualiseren
   //ze herhaalt telkens de vorige versie
   //A --> B, B --> C, C --> D, D --> F, F --> .....
-  const doubledHistories = [];
-  for (let i = 0; i < histories.length; i++) {
-    const history = histories[i];
-    doubledHistories.push(history);
-    if (i > 0 && i < histories.length - 1) {
-      doubledHistories.push(history);
-    }
-  }
+
+  // const doubledHistories = [];
+  // for (let i = 0; i < histories.length; i++) {
+  //   const history = histories[i];
+  //   doubledHistories.push(history);
+  //   if (i > 0 && i < histories.length - 1) {
+  //     doubledHistories.push(history);
+  //   }
+  // }
 
   //GRID methode 2
   //elke lijn = een box
   //elke loop dat de onderstaande forloop doet, komt op de plaats die deze lijnen omschrijft
   const boxes = [
-    { x: 5, y: 5, width: 64, height: 17 },
-    { x: 330, y: 130, width: 64, height: 73 },
-    { x: 35, y: 360, width: 64, height: 73 },
-    { x: 330, y: 590, width: 64, height: 73 },
+    { x: 74, y: 66, width: 149, height: 33 },
+    { x: 372, y: 132, width: 149, height: 50 },
+    { x: 74, y: 198, width: 149, height: 66 },
+    { x: 372, y: 264, width: 149, height: 80 },
+    { x: 74, y: 331, width: 149, height: 50 },
+    { x: 372, y: 463, width: 149, height: 160 },
+    { x: 74, y: 529, width: 149, height: 65 },
   ];
 
   let boxIndex = 0;
@@ -47,60 +51,60 @@ async function makePdf() {
   // doc.moveTo(297, 0).lineTo(297, 842).dash(5, { space: 10 }).stroke();
   // doc.addPage();
 
-  for (const revision of doubledHistories) {
+  for (const revision of histories) {
     const box = boxes[boxIndex];
 
     //lay-out
 
     function editor(text) {
-      doc.fontSize(7).font("Helvetica").text(text, box.x, box.y);
-    }
-
-    function date(text) {
       doc
-        .fontSize(7)
+        .fontSize(10)
         .font("Helvetica")
-        .text(text, box.x, box.y + 10);
+        .text(text, box.x - 3, box.y + 45 + box.height, { oblique: "yes" });
     }
 
     function time(text) {
       doc
-        .fontSize(7)
+        .fontSize(10)
         .font("Helvetica")
-        .text(text, box.x, box.y + 20);
+        .text(text, box.x + 123, box.y + 18 + box.height, { oblique: "yes" });
+    }
+
+    function date(text) {
+      doc
+        .fontSize(10)
+        .font("Helvetica")
+        .text(text, box.x + 100, box.y + 7 + box.height, { oblique: "yes" });
     }
 
     function description(text) {
       doc
-        .fontSize(7)
+        .fontSize(14)
         .font("Times-Roman")
-        .text(text, box.x + 3, box.y + 50, { width: box.width });
+        .text(text, box.x + 20, box.y + 10, { width: 110 });
     }
 
-    //kaders
-    doc
-      .rect(box.x, box.y + 45, box.width, box.height)
-      .lineWidth(0.5)
-      .stroke();
+    //tekst ballon
+    doc.polygon(
+      [box.x, box.y],
+      [box.x + 149, box.y],
+      [box.x + 149, box.y + box.height],
+      [box.x + 15, box.y + box.height],
+      [box.x + 0, box.y + box.height + 30],
+      [box.x + 0, box.y + box.height + 30]
+    );
+    doc.stroke();
 
     //vouwlijn
-
-    //lijnen
-    doc.moveTo(74, 0).lineTo(74, 842).stroke();
-    doc.moveTo(149, 0).lineTo(149, 842).stroke();
-    doc.moveTo(223, 0).lineTo(223, 842).stroke();
     doc.moveTo(298, 0).lineTo(298, 842).stroke();
-    doc.moveTo(372, 0).lineTo(372, 842).stroke();
-    doc.moveTo(446, 0).lineTo(446, 842).stroke();
-    doc.moveTo(521, 0).lineTo(521, 842).stroke();
 
     //inhoud kaders
-    editor("by " + revision.editor);
-    date(revision.date);
+    editor(revision.editor);
     time(revision.time);
+    date(revision.date);
 
     //onder kaders
-    description(" '" + revision.description + "' ");
+    description(revision.description);
 
     boxIndex += 1;
     if (boxIndex >= boxes.length) {

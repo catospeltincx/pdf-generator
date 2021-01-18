@@ -25,10 +25,12 @@ header {
 }
 
 .title {
-  color: rgb(0, 87, 47);
-  margin: -10px 0 0;
+  color: rgb(0, 0, 0);
+  padding-left: 5px;
   font-family: "Oswald", sans-serif;
   font-size: 1.5rem;
+  width: 260px;
+  background-color: rgb(8, 176, 72);
 }
 
 .description {
