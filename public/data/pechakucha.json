@@ -1,22 +1,13 @@
-[
+[ 
     {
-        "deel":"1 — begin",
-        "tustit":"",
-        "beeld":"",
-        "tekst":""
-    },
-
-    {
-        "deel":"2 — wat gedaan",
-        "tustit":"",
-        "beeld":"",
-        "tekst":""
-    },
-    {
-        "deel":"3 — wat gaan doen",
-        "tustit":"",
-        "beeld":"",
-        "tekst":""
+        "slide":"1",
+        "tit":"Inhoudstafel",
+        "inhoud":["Begin", ["Indesign : - /"], "Onderzoek", ["Theoretisch", ["F/OSS"], ["Copyright"], ["Post-Digital Print"]], ["Praktijk", ["PDFKit"], ["Data Driven Design"], ["Wikipedia"], ["Werk Pagina"]], ["Semester twee", ["technische verlanglijst"], ["= > doel"]]],
+        "beeld1":"1-a.jpg",
+        "beeld2":"1-b.jpg",
+        "beeld3":"1-c.png",
+        "beeld4":"1-d.jpg"
     }
+
     
 ]

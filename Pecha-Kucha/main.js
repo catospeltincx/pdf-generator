@@ -1,6 +1,7 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
+import { loadImage } from "../utils/image";
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
@@ -12,36 +13,56 @@ async function makePdf() {
 
   //haalt de data uit de juiste json-file
   const res = await fetch("/data/pechakucha.json");
-  const slides = await res.json();
+  const titles = await res.json();
 
-  //GRID methode 2
-  //elke lijn = een box
-  //elke loop dat de onderstaande forloop doet, komt op de plaats die deze lijnen omschrijft
-  //const boxes = [{ x: 74, y: 66, width: 149, height: 33 }];
-  const boxes = [{ x: 50, y: 50, width: 1820, height: 980 }];
+  const boxes = [{ x: 0, y: 0 }];
 
   let boxIndex = 0;
 
-  //img-loop
-
-  for (const slide of slides) {
+  for (const title of titles) {
     const box = boxes[boxIndex];
+    const image1 = await loadImage("/images/pecha-kucha/" + title.beeld1);
+    const image2 = await loadImage("/images/pecha-kucha/" + title.beeld2);
+    const image3 = await loadImage("/images/pecha-kucha/" + title.beeld3);
+    const image4 = await loadImage("/images/pecha-kucha/" + title.beeld4);
+
+    doc.image(image1, box.x + 414, box.y + 50);
+    doc.image(image2, box.x + 1142, box.y + 50);
+    doc.image(image3, box.x + 414, box.y + 442);
+    doc.image(image4, box.x + 1142, box.y + 442);
 
     //lay-out
 
-    function deel(text) {
+    function tit(text) {
       doc
         .fontSize(36)
         .font("Times-Roman")
-
-        .text(text, box.x, box.y, { width: 200 });
+        .text(text, box.x + 50, box.y + 95);
     }
 
-    //vouwlijn
-    doc.moveTo(300, 0).lineTo(300, 1080).dash(20, { space: 10 }).stroke();
+    function slide(text) {
+      doc
+        .fontSize(35)
+        .font("Courier")
+        .text(text, box.x + 50, box.y + 50);
+    }
 
-    //inhoud kaders
-    deel(slide.deel);
+    function inhoud(list) {
+      doc.fontSize(36).font("Times-Roman").list(list, {
+        bulletRadius: 5,
+        textIndent: 35,
+        lineGap: 3,
+        width: 330,
+      });
+    }
+
+    //lijn
+    doc.moveTo(414, 0).lineTo(414, 1080).dash(20, { space: 10 }).stroke();
+
+    //inhoud kader
+    slide(title.slide);
+    tit(title.tit);
+    inhoud(title.inhoud);
 
     boxIndex += 1;
     if (boxIndex >= boxes.length) {
