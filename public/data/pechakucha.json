@@ -2,12 +2,124 @@
     {
         "slide":"1",
         "tit":"Inhoudstafel",
-        "inhoud":["Begin", ["Indesign : - /"], "Onderzoek", ["Theoretisch", ["F/OSS"], ["Copyright"], ["Post-Digital Print"]], ["Praktijk", ["PDFKit"], ["Data Driven Design"], ["Wikipedia"], ["Werk Pagina"]], ["Semester twee", ["technische verlanglijst"], ["= > doel"]]],
-        "beeld1":"1-a.jpg",
-        "beeld2":"1-b.jpg",
-        "beeld3":"1-c.png",
-        "beeld4":"1-d.jpg"
+        "inhoud":["Begin", ["Indesign : - /"], ["Open Source Design : - 0"], "Onderzoek", ["Theoretisch", ["F/OSS"], ["Post-Digital Print"]], ["Praktijk", ["PDFKit"], ["Data Driven Design"], ["Wikipedia"], ["Werk Pagina"]], ["Semester twee", ["technische verlanglijst"], ["= > doel"]]],
+        "beeld1":"inhoud-3.png",
+        "beeld2":"inhoud-4.jpg",
+        "beeld3":"inhoud-1.jpg",
+        "beeld4":"inhoud-2.jpg",
+        "beeld5":"inhoud-5.png",
+        "beeld6":"inhoud-6.png"
+    },
+
+    {
+        "slide":"2",
+        "tit":"Begin",
+        "inhoud":[ "Indesign : - /", "Open Source Design : - 0"],
+        "beeld1":"inhoud-7.jpg",
+        "beeld2":"inhoud-8.png",
+        "beeld3":"inhoud-9.png",
+        "beeld4":"inhoud-10.png",
+        "beeld5":"inhoud-11.png",
+        "beeld6":"inhoud-12.png"
+    },
+
+    {
+        "slide":"3",
+        "tit":"Onderzoek",
+        "inhoud":[ "Theorie", ["F/OSS"], ["Geschiedenis van het boek"], ["Post-Digital Print"] ],
+        "beeld1":"inhoud-13.jpg",
+        "beeld2":"inhoud-14.png",
+        "beeld3":"inhoud-15.png",
+        "beeld4":"inhoud-16.jpg",
+        "beeld5":"inhoud-17.jpg",
+        "beeld6":"inhoud-18.jpg"
+    },
+
+    {
+        "slide":"4",
+        "tit":"Onderzoek",
+        "inhoud":[ "Theorie",["Post-Digital Print", ["La fin des livres"], ["scrapbooks"]] ],
+        "beeld1":"inhoud-19.jpg",
+        "beeld2":"inhoud-20.jpg",
+        "beeld3":"inhoud-21.png",
+        "beeld4":"inhoud-22.jpg",
+        "beeld5":"inhoud-23.png",
+        "beeld6":"inhoud-24.jpg"
+    },
+
+    {
+        "slide":"5",
+        "tit":"Onderzoek",
+        "inhoud":[ "Theorie",["Post-Digital Print", ["web <--> print", ["netwerk/lineair"], ["flexibel/statisch"], ["chaos/rust"]]] ],
+        "beeld1":"inhoud-25.jpg",
+        "beeld2":"inhoud-26.jpg",
+        "beeld3":"inhoud-30.jpg",
+        "beeld4":"inhoud-28.jpg",
+        "beeld5":"inhoud-29.jpg",
+        "beeld6":"inhoud-27.jpg"
+    },
+
+    {
+        "slide":"6",
+        "tit":"Onderzoek",
+        "inhoud":[ "Praktijk",["PDFKit"]],
+        "beeld1":"inhoud-31.png",
+        "beeld2":"inhoud-32.png",
+        "beeld3":"inhoud-33.png",
+        "beeld4":"inhoud-34.png",
+        "beeld5":"inhoud-35.png",
+        "beeld6":"inhoud-36.jpg"
+    },
+
+    {
+        "slide":"7",
+        "tit":"Onderzoek",
+        "inhoud":[ "Praktijk",["Data Driven Design"]],
+        "beeld1":"inhoud-37.png",
+        "beeld2":"inhoud-38.jpg",
+        "beeld3":"inhoud-39.png",
+        "beeld4":"inhoud-40.png",
+        "beeld5":"inhoud-41.png",
+        "beeld6":"inhoud-42.png"
+    },
+
+    {
+        "slide":"8",
+        "tit":"Onderzoek",
+        "inhoud":[ "Praktijk",["Data Driven Design", ["Wikipedia"]]],
+        "beeld1":"inhoud-43.png",
+        "beeld2":"inhoud-44.png",
+        "beeld3":"inhoud-45.png",
+        "beeld4":"inhoud-46.png",
+        "beeld5":"inhoud-47.png",
+        "beeld6":"inhoud-48.png"
+    },
+
+    {
+        "slide":"9",
+        "tit":"Onderzoek",
+        "inhoud":[ "Praktijk",["Werk Pagina", ["experimenten met PDFKit"]]],
+        "beeld1":"inhoud-49.png",
+        "beeld2":"inhoud-50.png",
+        "beeld3":"inhoud-51.png",
+        "beeld4":"inhoud-52.png",
+        "beeld5":"inhoud-53.png",
+        "beeld6":"inhoud-54.png"
+    },
+
+    {
+        "slide":"10",
+        "tit":"Onderzoek",
+        "inhoud":[ "Semester twee",["technische verlanglijst", "= > doel"]],
+        "beeld1":"inhoud-55.png",
+        "beeld2":"inhoud-56.jpg",
+        "beeld3":"inhoud-57.jpg",
+        "beeld4":"inhoud-58.jpg",
+        "beeld5":"inhoud-59.jpg",
+        "beeld6":"inhoud-60.png"
     }
 
+
     
+
 ]

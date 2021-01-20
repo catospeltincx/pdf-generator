@@ -25,11 +25,15 @@ async function makePdf() {
     const image2 = await loadImage("/images/pecha-kucha/" + title.beeld2);
     const image3 = await loadImage("/images/pecha-kucha/" + title.beeld3);
     const image4 = await loadImage("/images/pecha-kucha/" + title.beeld4);
+    const image5 = await loadImage("/images/pecha-kucha/" + title.beeld5);
+    const image6 = await loadImage("/images/pecha-kucha/" + title.beeld6);
 
     doc.image(image1, box.x + 414, box.y + 50);
-    doc.image(image2, box.x + 1142, box.y + 50);
-    doc.image(image3, box.x + 414, box.y + 442);
-    doc.image(image4, box.x + 1142, box.y + 442);
+    doc.image(image2, box.x + 915, box.y + 50);
+    doc.image(image3, box.x + 1415, box.y + 50);
+    doc.image(image4, box.x + 414, box.y + 442);
+    doc.image(image5, box.x + 915, box.y + 442);
+    doc.image(image6, box.x + 1415, box.y + 442);
 
     //lay-out
 
