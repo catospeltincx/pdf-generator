@@ -1,0 +1,24 @@
+body {
+  background: black;
+  margin: 50px;
+}
+
+img {
+  width: 600px;
+  padding-bottom: 25px;
+}
+
+a {
+  color: yellow;
+}
+
+.roll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tustit {
+  color: white;
+  text-align: center;
+}

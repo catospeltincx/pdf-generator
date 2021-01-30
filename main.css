@@ -33,6 +33,10 @@ header {
   background-color: rgb(8, 176, 72);
 }
 
+.content-part {
+  padding-bottom: 25px;
+}
+
 .description {
   color: rgb(0, 0, 0);
   margin: 0;
