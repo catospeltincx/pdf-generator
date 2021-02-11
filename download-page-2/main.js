@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 
 const seen = [];
-async function getPage(pageName, count = 100) {
+async function getPage(pageName, count = 20) {
   console.log(pageName);
 
   // Note that we've seen this page.
@@ -16,7 +16,7 @@ async function getPage(pageName, count = 100) {
   // Turn the page text into HTML code.
   const div = document.createElement("div");
   div.innerHTML = text;
-  // document.body.appendChild(div);
+  document.body.appendChild(div);
 
   // Get all links
   let links = Array.from(div.querySelectorAll('a[rel="mw:WikiLink"]'));
@@ -37,6 +37,16 @@ async function getPage(pageName, count = 100) {
   );
   pageNames = pageNames.filter((pageName) => !pageName.includes("Help:"));
   pageNames = pageNames.filter((pageName) => !pageName.includes("Wikipedia:"));
+  pageNames = pageNames.filter((pageName) => !pageName.includes("Talk:"));
+  pageNames = pageNames.filter((pageName) => !pageName.includes("User:"));
+  pageNames = pageNames.filter((pageName) => !pageName.includes("Template:"));
+  pageNames = pageNames.filter((pageName) => !pageName.includes("Special:"));
+  pageNames = pageNames.filter((pageName) => !pageName.includes("Portal:"));
+  pageNames = pageNames.filter((pageName) => !pageName.includes("Category:"));
+  pageNames = pageNames.filter(
+    (pageName) => !pageName.includes("Wikipedia_talk:")
+  );
+  pageNames = pageNames.filter((pageName) => !pageName.includes("MOS:"));
   pageNames = pageNames.filter((pageName) => !seen.includes(pageName));
 
   const firstPageName = pageNames[0];
@@ -51,4 +61,4 @@ async function getPage(pageName, count = 100) {
   }
 }
 
-getPage("Bee");
+getPage("bean");
