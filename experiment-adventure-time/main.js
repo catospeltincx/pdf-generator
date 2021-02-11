@@ -14,6 +14,7 @@ async function makePdf() {
   const doc = new PDFDocument({
     size: [PAGE_WIDTH, PAGE_HEIGHT],
     autoFirstPage: false,
+    bufferPages: true,
   });
 
   const stream = doc.pipe(blobStream());
@@ -36,31 +37,34 @@ async function makePdf() {
     boxes.push(box);
   }
 
-  console.log(boxes);
+  // console.log(boxes);
 
+  // Make all pages
   for (let page = 1; page <= bookPages; page++) {
     doc.addPage({
       size: [PAGE_WIDTH, PAGE_HEIGHT],
       margins: { top: 0, left: 0, bottom: 0, right: 0 },
     });
-    // console.log(doc.page.height, doc.page.margins, doc.page.maxY());
-    doc.fontSize(8).text(`Pagina ${page}`, 10, doc.page.maxY() - 10);
-    const boxesForThisPage = boxes.filter((box) => box.page === page);
 
-    for (const box of boxesForThisPage) {
-      const nextBox = boxes.find((b) => box.index + 1 === b.index);
-      doc.rect(box.x, box.y, box.width, box.height);
-      doc.fontSize(12).text(box.index, box.x + 10, box.y + 10);
-      if (nextBox) {
-        const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
-        doc.fontSize(8).text(verwijzing, box.x + 10, box.y + 20);
-      }
-      doc.stroke();
-    }
+    // Add page footer
+    doc.fontSize(8).text(`Pagina ${page}`, 10, doc.page.maxY() - 10);
   }
 
-  // doc.polygon([100, 0], [50, 100], [150, 100]);
-  // doc.stroke();
+  // Draw all the boxes
+  for (const box of boxes) {
+    doc.switchToPage(box.page - 1);
+
+    // Draw the box
+    doc.rect(box.x, box.y, box.width, box.height);
+    doc.stroke();
+    doc.fontSize(12).text(box.index, box.x + 10, box.y + 10);
+
+    const nextBox = boxes.find((b) => box.index + 1 === b.index);
+    if (nextBox) {
+      const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
+      doc.fontSize(8).text(verwijzing, box.x + 10, box.y + 20);
+    }
+  }
 
   // end and display the document in the iframe to the right
   doc.end();
