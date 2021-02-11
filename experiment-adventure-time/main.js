@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime";
-import PDFDocument, { addPage } from "pdfkit";
+import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
 // import { loadImage } from "../utils/image";
 
@@ -13,7 +13,9 @@ async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: [PAGE_WIDTH, PAGE_HEIGHT],
+    autoFirstPage: false,
   });
+
   const stream = doc.pipe(blobStream());
 
   // Setup Layout
@@ -37,7 +39,12 @@ async function makePdf() {
   console.log(boxes);
 
   for (let page = 1; page <= bookPages; page++) {
-    doc.fontSize(8).text(`Pagina ${page}`, 10, 10);
+    doc.addPage({
+      size: [PAGE_WIDTH, PAGE_HEIGHT],
+      margins: { top: 0, left: 0, bottom: 0, right: 0 },
+    });
+    // console.log(doc.page.height, doc.page.margins, doc.page.maxY());
+    doc.fontSize(8).text(`Pagina ${page}`, 10, doc.page.maxY() - 10);
     const boxesForThisPage = boxes.filter((box) => box.page === page);
 
     for (const box of boxesForThisPage) {
@@ -49,11 +56,6 @@ async function makePdf() {
         doc.fontSize(8).text(verwijzing, box.x + 10, box.y + 20);
       }
       doc.stroke();
-    }
-
-    // Go to the next page
-    if (page < bookPages) {
-      doc.addPage();
     }
   }
 
