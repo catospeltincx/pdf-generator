@@ -13,6 +13,7 @@ async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: "A5",
+    //niet automatisch een eerste pagina maken
     autoFirstPage: false,
     bufferPages: true,
   });
@@ -23,10 +24,11 @@ async function makePdf() {
 
   const bookPages = 50;
   const boxCount = 30;
-  const boxes = [];
+  const boxes1 = [];
+  const boxes2 = [];
 
   for (let i = 0; i < boxCount; i++) {
-    const box = {
+    const box1 = {
       index: i,
       page: 1 + Math.floor(Math.random() * bookPages),
       x: randInt(0, PAGE_WIDTH - 200),
@@ -34,38 +36,68 @@ async function makePdf() {
       width: randInt(50, 200),
       height: randInt(50, 200),
     };
-    boxes.push(box);
+
+    const box2 = {
+      index: i,
+      page: 1 + Math.floor(Math.random() * bookPages),
+      x: randInt(0, PAGE_WIDTH - 200),
+      y: randInt(0, PAGE_HEIGHT - 200),
+      width: randInt(50, 100),
+      height: randInt(50, 100),
+    };
+    boxes1.push(box1);
+    boxes2.push(box2);
   }
 
-  // console.log(boxes);
+  //console.log(boxes);
 
   // Make all pages
   for (let page = 1; page <= bookPages; page++) {
     doc.addPage({
       size: [PAGE_WIDTH, PAGE_HEIGHT],
-      margins: { top: 0, left: 0, bottom: 10, right: 0 },
+      margins: { top: 0, left: 0, bottom: 25, right: 0 },
     });
 
     // Add page footer
     doc
       .fontSize(8)
       .font("Courier")
-      .text(` ${page}`, 10, doc.page.maxY() - 10, { align: "center" });
+      .text(` ${page}`, 0, doc.page.maxY() - 10, { align: "center" });
   }
 
   // Draw all the boxes
-  for (const box of boxes) {
-    doc.switchToPage(box.page - 1);
+  for (const box1 of boxes1) {
+    doc.switchToPage(box1.page - 1);
 
-    // Draw the box
-    doc.rect(box.x, box.y, box.width, box.height);
-    doc.stroke();
-    doc.fontSize(12).text(box.index, box.x + 10, box.y + 10);
+    //lees-verder-box
+    doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("red");
+    doc
+      .font("Helvetica")
+      .fontSize(18)
+      .text(box1.index, box1.x + 10, box1.y + 10)
+      .fillColor("black");
 
-    const nextBox = boxes.find((b) => box.index + 1 === b.index);
+    const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
     if (nextBox) {
       const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(8).text(verwijzing, box.x + 10, box.y + 20);
+      doc.fontSize(18).text(verwijzing, box1.x + 10, box1.y + 20);
+    }
+  }
+
+  for (const box2 of boxes2) {
+    doc.switchToPage(box2.page - 1);
+    // Draw the box
+    doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("green");
+    doc
+      .fontSize(12)
+      .text(box2.index, box2.x + 10, box2.y + 10)
+      .fillColor("black");
+
+    const nextBox = boxes2.find((b) => box2.index + 1 === b.index);
+    if (nextBox) {
+      const verwijzing = `lees verder op pagina ${nextBox.page}, kader ${nextBox.index}`;
+      doc.fontSize(8).text(verwijzing, box2.x + 10, box2.y + 20);
+      doc.fillColor("red");
     }
   }
 
