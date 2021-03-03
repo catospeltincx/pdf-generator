@@ -20,10 +20,14 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
+  // data
+  const res = await fetch("/data/network.json");
+  const elements = await res.json();
+
   // Setup Layout
 
-  const bookPages = 50;
-  const boxCount = 30;
+  const bookPages = 10;
+  const boxCount = 20;
   const boxes1 = [];
   const boxes2 = [];
 
@@ -69,24 +73,27 @@ async function makePdf() {
   for (const box1 of boxes1) {
     doc.switchToPage(box1.page - 1);
 
-    //lees-verder-box
-    doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("red");
-    doc
-      .font("Helvetica")
-      .fontSize(18)
-      .text(box1.index, box1.x + 10, box1.y + 10)
-      .fillColor("black");
+    for (const revision of elements) {
+      //lees-verder-box
+      doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("red");
+      doc
+        .text(revision.txt)
+        .font("Helvetica")
+        .fontSize(18)
+        .text(box1.index, box1.x + 10, box1.y + 10)
+        .fillColor("black");
 
-    const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
-    if (nextBox) {
-      const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(18).text(verwijzing, box1.x + 10, box1.y + 20);
+      const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
+      if (nextBox) {
+        const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
+        doc.fontSize(18).text(verwijzing, box1.x + 10, box1.y + 20);
+      }
     }
   }
 
   for (const box2 of boxes2) {
     doc.switchToPage(box2.page - 1);
-    // Draw the box
+    //lees-verder-box
     doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("green");
     doc
       .fontSize(12)
