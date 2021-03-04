@@ -73,28 +73,31 @@ async function makePdf() {
   for (const box1 of boxes1) {
     doc.switchToPage(box1.page - 1);
 
-    for (const revision of elements) {
-      //lees-verder-box
-      doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("red");
-      doc
-        .text(revision.txt)
-        .font("Helvetica")
-        .fontSize(18)
-        .text(box1.index, box1.x + 10, box1.y + 10)
-        .fillColor("black");
+    //lees-verder-box
+    doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("red");
+    doc
 
-      const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
-      if (nextBox) {
-        const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
-        doc.fontSize(18).text(verwijzing, box1.x + 10, box1.y + 20);
-      }
+      .font("Helvetica")
+      .fontSize(18)
+      .text(box1.index, box1.x + 10, box1.y + 10)
+      .fillColor("black");
+
+    for (const revision of elements) {
+      //data
+      doc.text(revision.txt, box1.x + 10, box1.y + 50);
+    }
+
+    const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
+    if (nextBox) {
+      const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
+      doc.fontSize(18).text(verwijzing, box1.x + 10, box1.y + 20);
     }
   }
 
   for (const box2 of boxes2) {
     doc.switchToPage(box2.page - 1);
     //lees-verder-box
-    doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("green");
+    doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("yellow");
     doc
       .fontSize(12)
       .text(box2.index, box2.x + 10, box2.y + 10)
