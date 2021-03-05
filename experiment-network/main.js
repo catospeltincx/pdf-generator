@@ -1,7 +1,6 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-// import { loadImage } from "../utils/image";
 
 function randInt(min, max) {
   return Math.floor(min + Math.random() * (max - min));
@@ -20,14 +19,10 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  // data
-  const res = await fetch("/data/network.json");
-  const elements = await res.json();
-
   // Setup Layout
 
   const bookPages = 10;
-  const boxCount = 20;
+  const boxCount = 10;
   const boxes1 = [];
   const boxes2 = [];
 
@@ -37,8 +32,8 @@ async function makePdf() {
       page: 1 + Math.floor(Math.random() * bookPages),
       x: randInt(0, PAGE_WIDTH - 200),
       y: randInt(0, PAGE_HEIGHT - 200),
-      width: randInt(50, 200),
-      height: randInt(50, 200),
+      width: randInt(155, 300),
+      height: randInt(25, 500),
     };
 
     const box2 = {
@@ -46,14 +41,15 @@ async function makePdf() {
       page: 1 + Math.floor(Math.random() * bookPages),
       x: randInt(0, PAGE_WIDTH - 200),
       y: randInt(0, PAGE_HEIGHT - 200),
-      width: randInt(50, 100),
-      height: randInt(50, 100),
+      width: randInt(155, 300),
+      height: randInt(25, 500),
     };
+
     boxes1.push(box1);
     boxes2.push(box2);
   }
 
-  //console.log(boxes);
+  console.log(boxes1, boxes2);
 
   // Make all pages
   for (let page = 1; page <= bookPages; page++) {
@@ -66,48 +62,39 @@ async function makePdf() {
     doc
       .fontSize(8)
       .font("Courier")
-      .text(` ${page}`, 0, doc.page.maxY() - 10, { align: "center" });
+      .text(`${page}`, 0, doc.page.maxY() - 10, { align: "center" });
   }
 
   // Draw all the boxes
+
+  //BOXES EERSTE ARTIKEL
   for (const box1 of boxes1) {
     doc.switchToPage(box1.page - 1);
 
-    //lees-verder-box
-    doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("red");
-    doc
-
-      .font("Helvetica")
-      .fontSize(18)
-      .text(box1.index, box1.x + 10, box1.y + 10)
-      .fillColor("black");
-
-    for (const revision of elements) {
-      //data
-      doc.text(revision.txt, box1.x + 10, box1.y + 50);
-    }
+    //DOOR-VERWIJZING
+    doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("black");
+    doc.fillColor("white").text(box1.index, box1.x + 10, box1.y + 10);
 
     const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
     if (nextBox) {
       const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(18).text(verwijzing, box1.x + 10, box1.y + 20);
+      doc.fontSize(7).text(verwijzing, box1.x + 10, box1.y + 20);
     }
   }
 
+  //BOXES TWEEDE ARTIKEL
   for (const box2 of boxes2) {
     doc.switchToPage(box2.page - 1);
-    //lees-verder-box
-    doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("yellow");
-    doc
-      .fontSize(12)
-      .text(box2.index, box2.x + 10, box2.y + 10)
-      .fillColor("black");
+
+    //DOOR-VERWIJZING
+
+    doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("#0f9641");
+    doc.fillColor("black").text(box2.index, box2.x + 10, box2.y + 10);
 
     const nextBox = boxes2.find((b) => box2.index + 1 === b.index);
     if (nextBox) {
       const verwijzing = `lees verder op pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(8).text(verwijzing, box2.x + 10, box2.y + 20);
-      doc.fillColor("red");
+      doc.fontSize(7).text(verwijzing, box2.x + 10, box2.y + 20);
     }
   }
 
