@@ -1,14 +1,15 @@
 [
     {
-        "txt":"Bean plant"
+        "title":"Production",
+        "text":"Bean plant"
     
     },
 
-    {
-        "txt":"For other uses, see Bean (disambiguation)."
+    {   "title":"Climate change",
+        "text":"For other uses, see Bean (disambiguation)."
     },
 
-    {
-        "txt":"Fresh vegetables (80 - 90% water)"
+    {   "title":"Pests",
+        "text":"Fresh vegetables (80 - 90% water)"
     }
 ]

@@ -19,11 +19,14 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
+  //Catch data WERKT NOT!!!!
+  const res = await fetch("/public/data/network.json");
+  const articles = await res.json();
+
   // Setup Layout
   const bookPages = 10;
   const boxCount = 10;
   const boxes1 = [];
-  const boxes2 = [];
 
   for (let i = 0; i < boxCount; i++) {
     const box1 = {
@@ -35,20 +38,10 @@ async function makePdf() {
       height: randInt(25, 500),
     };
 
-    const box2 = {
-      index: i,
-      page: 1 + Math.floor(Math.random() * bookPages),
-      x: randInt(0, PAGE_WIDTH - 200),
-      y: randInt(0, PAGE_HEIGHT - 200),
-      width: randInt(155, 300),
-      height: randInt(25, 500),
-    };
-
     boxes1.push(box1);
-    boxes2.push(box2);
   }
 
-  console.log(boxes1, boxes2);
+  console.log(boxes1);
 
   // Make all pages
   for (let page = 1; page <= bookPages; page++) {
@@ -81,20 +74,10 @@ async function makePdf() {
     }
   }
 
-  //BOXES TWEEDE ARTIKEL
-  for (const box2 of boxes2) {
-    doc.switchToPage(box2.page - 1);
-
-    //DOOR-VERWIJZING
-
-    doc.rect(box2.x, box2.y, box2.width, box2.height).fillAndStroke("#0f9641");
-    doc.fillColor("black").text(box2.index, box2.x + 10, box2.y + 10);
-
-    const nextBox = boxes2.find((b) => box2.index + 1 === b.index);
-    if (nextBox) {
-      const verwijzing = `lees verder op pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(7).text(verwijzing, box2.x + 10, box2.y + 20);
-    }
+  //add data WERKT NOT!!!!
+  for (const article of articles) {
+    doc.text(article.title);
+    doc.text(article.text);
   }
 
   // end and display the document in the iframe to the right
