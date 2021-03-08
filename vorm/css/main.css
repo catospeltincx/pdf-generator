@@ -1,9 +1,57 @@
+body {
+  margin: 0;
+}
+
+/* HEADER */
+/*intro*/
+header {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+}
+
+.intro {
+  padding: 25px;
+}
+
+.title {
+  font-family: "Oswald";
+  font-size: 1.7rem;
+  line-height: 1.9rem;
+  padding-bottom: 10px;
+}
+
+.project-description {
+  max-width: 550px;
+  font-size: 1.2rem;
+}
+
+/*menu*/
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: "Oswald";
+  font-size: 1.7rem;
+}
+
+a:hover {
+  color: red;
+}
+
+.menu {
+  padding: 25px;
+  line-height: 1.9rem;
+}
+
+/*BODY*/
 .img {
   max-width: 100%;
 }
 
 canvas {
   max-height: 100%;
+  margin-left: 25px;
 }
 
 .wrapper {
@@ -17,7 +65,7 @@ canvas {
   grid-gap: 10px;
   max-height: 1100px;
   overflow-y: auto;
-  background: grey;
+  background: rgb(0, 0, 0);
 }
 
 .library img {
@@ -26,7 +74,18 @@ canvas {
 
 button {
   width: 100px;
-  height: 50px;
+  height: 100px;
   margin-left: 10px;
-  background-color: red;
+  background-color: rgb(0, 255, 102);
+  border-radius: 50%;
+  font-family: "Times";
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  border: black;
 }
