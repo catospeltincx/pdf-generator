@@ -19,8 +19,11 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  // Setup Layout
+  //fetch data
+  const res = await fetch("/data/network.json");
+  const article = await res.json();
 
+  // Setup Layout
   const bookPages = 25;
   const boxCount = 15;
   const boxes1 = [];

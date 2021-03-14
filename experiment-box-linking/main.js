@@ -18,15 +18,17 @@ async function makePdf() {
   });
   const stream = doc.pipe(blobStream());
 
-  // Fetch article text
+  //fetch text article
   const res = await fetch("/data/los-angeles.json");
   const article = await res.json();
 
+  //define e a page
   doc.addPage({
     size: [PAGE_WIDTH, PAGE_HEIGHT],
     margins: { top: 0, left: 0, bottom: 0, right: 0 },
   });
 
+  //define boxes (grid)
   const boxes = [
     { x: 20, y: 20, width: 380, height: 130 },
     { x: 20, y: 200, width: 380, height: 100 },

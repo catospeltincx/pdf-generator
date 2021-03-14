@@ -1,47 +1,38 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
+//import { loadImage } from "../utils/image";
 
+//define min and max (handy for when using random())
 function randInt(min, max) {
   return Math.floor(min + Math.random() * (max - min));
 }
 
+//boxes color
+function colorize() {
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return (randomColor = `#${randomColor}`);
+}
+
 const PAGE_WIDTH = 420;
 const PAGE_HEIGHT = 595;
+
 async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: "A5",
-    //niet automatisch een eerste pagina maken
+    //do not automatically make a first page
     autoFirstPage: false,
     bufferPages: true,
   });
 
   const stream = doc.pipe(blobStream());
 
-  //Catch data WERKT NOT!!!!
-  const res = await fetch("/public/data/network.json");
-  const articles = await res.json();
-
-  // Setup Layout
-  const bookPages = 10;
-  const boxCount = 10;
-  const boxes1 = [];
-
-  for (let i = 0; i < boxCount; i++) {
-    const box1 = {
-      index: i,
-      page: 1 + Math.floor(Math.random() * bookPages),
-      x: randInt(0, PAGE_WIDTH - 200),
-      y: randInt(0, PAGE_HEIGHT - 200),
-      width: randInt(155, 300),
-      height: randInt(25, 500),
-    };
-
-    boxes1.push(box1);
-  }
-
-  console.log(boxes1);
+  //define amount of boxes
+  //define amount of pages
+  const bookPages = 25;
+  const boxCount = 100;
+  const boxes = [];
 
   // Make all pages
   for (let page = 1; page <= bookPages; page++) {
@@ -50,34 +41,89 @@ async function makePdf() {
       margins: { top: 0, left: 0, bottom: 25, right: 0 },
     });
 
-    // Add page footer
+    // Add pagenumbers in footer
     doc
       .fontSize(8)
       .font("Courier")
       .text(`${page}`, 0, doc.page.maxY() - 10, { align: "center" });
   }
 
-  // Draw all the boxes
+  //the grid
+  const width = [78, 161, 244, 327, 410];
+  const height = [113, 231, 349, 467, 585];
+  const x = [5, 88, 171, 254, 337];
+  const y = [5, 123, 241, 359, 477];
 
-  //BOXES EERSTE ARTIKEL
-  for (const box1 of boxes1) {
-    doc.switchToPage(box1.page - 1);
-
-    //DOOR-VERWIJZING
-    doc.rect(box1.x, box1.y, box1.width, box1.height).fillAndStroke("black");
-    doc.fillColor("white").text(box1.index, box1.x + 10, box1.y + 10);
-
-    const nextBox = boxes1.find((b) => box1.index + 1 === b.index);
-    if (nextBox) {
-      const verwijzing = `Ga naar pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(7).text(verwijzing, box1.x + 10, box1.y + 20);
-    }
+  function boxWidth() {
+    let minmax = randInt(0, width.length - 1);
+    return width[minmax];
   }
 
-  //add data WERKT NOT!!!!
-  for (const article of articles) {
-    doc.text(article.title);
-    doc.text(article.text);
+  function boxHeight() {
+    let minmax = randInt(0, height.length - 1);
+    return height[minmax];
+  }
+
+  function boxX() {
+    let minmax = randInt(0, x.length - 1);
+    return x[minmax];
+  }
+
+  function boxY() {
+    let minmax = randInt(0, x.length - 1);
+    return x[minmax];
+  }
+
+  // define lay-out boxes
+  for (let i = 0; i < boxCount; i++) {
+    boxes.push({
+      index: i,
+      page: 1 + Math.floor(Math.random() * bookPages),
+      x: boxX(),
+      y: boxY(),
+      width: boxWidth(),
+      height: boxHeight(),
+    });
+  }
+  //console.log(boxes);
+
+  //fetch data
+  const res = await fetch("/data/los-angeles.json");
+  const inputs = await res.json();
+
+  //console.log(inputs);
+
+  //fetch article images -- NIET GELUKT
+  // for (var input of inputs) {
+  //   var inputImage = await loadImage(
+  //     "/images/experiment-network-data/" + input.img
+  //   );
+  //   doc.image(inputImage);
+  // }
+
+  // Draw all the boxes
+  for (const articles of boxes) {
+    doc.switchToPage(articles.page - 1);
+
+    //colored box
+    doc
+      .rect(articles.x, articles.y, articles.width, articles.height)
+      .fillAndStroke(colorize());
+
+    doc.text(inputs.title);
+    console.log(inputs);
+
+    //"continue reading..."
+    doc
+      .font("Courier")
+      .fillColor("black")
+      .fontSize(8)
+      .text(articles.index, articles.x + 5, articles.y + 5);
+    const nextBox = boxes.find((b) => articles.index + 1 === b.index);
+    if (nextBox) {
+      const verwijzing = `--> pagina ${nextBox.page}, kader ${nextBox.index}`;
+      doc.fontSize(8).text(verwijzing, articles.x + 5, articles.y + 15);
+    }
   }
 
   // end and display the document in the iframe to the right
