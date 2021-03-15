@@ -71,7 +71,7 @@ async function makePdf() {
 
   function boxY() {
     let minmax = randInt(0, x.length - 1);
-    return x[minmax];
+    return y[minmax];
   }
 
   // define lay-out boxes
@@ -86,20 +86,6 @@ async function makePdf() {
     });
   }
   //console.log(boxes);
-
-  //fetch data
-  const res = await fetch("/data/los-angeles.json");
-  const inputs = await res.json();
-
-  //console.log(inputs);
-
-  //fetch article images -- NIET GELUKT
-  // for (var input of inputs) {
-  //   var inputImage = await loadImage(
-  //     "/images/experiment-network-data/" + input.img
-  //   );
-  //   doc.image(inputImage);
-  // }
 
   // Draw all the boxes
   for (const articles of boxes) {

@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 
 const seen = [];
-async function getPage(pageName, count = 10) {
+async function getPage(pageName, count = 5) {
   console.log(pageName);
 
   // Note that we've seen this page.
@@ -16,6 +16,8 @@ async function getPage(pageName, count = 10) {
   // Turn the page text into HTML code.
   const div = document.createElement("div");
   div.innerHTML = text;
+  //de volgende afzetten als je enkel titels van links wil zien
+  //en niet ook de alle andere tekst
   document.body.appendChild(div);
 
   // Get all links
@@ -61,4 +63,4 @@ async function getPage(pageName, count = 10) {
   }
 }
 
-getPage("water");
+getPage("Scotland");
