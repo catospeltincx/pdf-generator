@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-//import { loadImage } from "../utils/image";
+import { loadImage } from "../utils/image";
 
 //define min and max (handy for when using random())
 function randInt(min, max) {
@@ -27,6 +27,9 @@ async function makePdf() {
   });
 
   const stream = doc.pipe(blobStream());
+
+  const res = await fetch("/data/random-wikipedia-articles.json");
+  const inputs = await res.json();
 
   //define amount of boxes
   //define amount of pages
@@ -96,9 +99,6 @@ async function makePdf() {
       .rect(articles.x, articles.y, articles.width, articles.height)
       .fillAndStroke(colorize());
 
-    doc.text(inputs.title);
-    console.log(inputs);
-
     //"continue reading..."
     doc
       .font("Courier")
@@ -110,6 +110,20 @@ async function makePdf() {
       const verwijzing = `--> pagina ${nextBox.page}, kader ${nextBox.index}`;
       doc.fontSize(8).text(verwijzing, articles.x + 5, articles.y + 15);
     }
+  }
+
+  //data from json
+  //ik kan niet naar hetzelfde grid verwijzen als hierboven
+  //because articles is not defined
+  for (const input of inputs) {
+    const wikiImage = await loadImage(
+      "/images/random-wikipedia-images/" + input.img
+    );
+
+    doc.font("Helvetica").fontSize(18).text(input.title);
+    doc.text(input.about);
+    doc.image(wikiImage, { width: 100 });
+    doc.text(input.body);
   }
 
   // end and display the document in the iframe to the right
