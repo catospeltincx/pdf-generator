@@ -8,7 +8,9 @@ function randInt(min, max) {
   return Math.floor(min + Math.random() * (max - min));
 }
 
-//boxes color
+//geef elke box een random color
+//!!!dit klopt niet echt!!! -->
+//niet elke box moet een andere kleur hebben maar elk ander artikel
 function colorize() {
   let randomColor = Math.floor(Math.random() * 16777215).toString(16);
   return (randomColor = `#${randomColor}`);
@@ -34,7 +36,7 @@ async function makePdf() {
   //define amount of boxes
   //define amount of pages
   const bookPages = 25;
-  const boxCount = 100;
+  const boxCount = 50;
   const boxes = [];
 
   // Make all pages
@@ -77,6 +79,8 @@ async function makePdf() {
     return y[minmax];
   }
 
+  let articleIndex = 0;
+
   // define lay-out boxes
   for (let i = 0; i < boxCount; i++) {
     boxes.push({
@@ -86,44 +90,55 @@ async function makePdf() {
       y: boxY(),
       width: boxWidth(),
       height: boxHeight(),
+      article: inputs[articleIndex],
+      image: inputs[articleIndex].img,
     });
+
+    //er is minder tekst dan het aantal boxen
+    //deze code is er om terug bij het eerste article te beginnen wanneer de articles 'op' zijn
+    articleIndex += 1;
+    if (articleIndex >= inputs.length) {
+      articleIndex = 0;
+    }
   }
-  //console.log(boxes);
+
+  //console.log(boxWidth);
 
   // Draw all the boxes
-  for (const articles of boxes) {
-    doc.switchToPage(articles.page - 1);
+  for (const box of boxes) {
+    const wikiImage = await loadImage(
+      "/images/random-wikipedia-images/" + box.article.img
+    );
+    doc.switchToPage(box.page - 1);
 
     //colored box
+    doc.rect(box.x, box.y, box.width, box.height).fillAndStroke(colorize());
+
+    //input json
     doc
-      .rect(articles.x, articles.y, articles.width, articles.height)
-      .fillAndStroke(colorize());
+      .fillColor("black")
+      .text(box.article.title, box.x + 5, box.y + 5, box.width, box.height);
+    doc
+      .fillColor("black")
+      .text(box.article.body, box.x + 5, box.y + 25, box.width, box.height);
+    doc.image(wikiImage, { width: 100 });
 
     //"continue reading..."
     doc
       .font("Courier")
-      .fillColor("black")
+      .fillColor("red")
       .fontSize(8)
-      .text(articles.index, articles.x + 5, articles.y + 5);
-    const nextBox = boxes.find((b) => articles.index + 1 === b.index);
+      .text(box.index, box.x + 5, box.y - 25);
+
+    const nextBox = boxes.find((b) => box.index + 1 === b.index);
     if (nextBox) {
       const verwijzing = `--> pagina ${nextBox.page}, kader ${nextBox.index}`;
-      doc.fontSize(8).text(verwijzing, articles.x + 5, articles.y + 15);
+      doc
+        .font("Courier")
+        .fillColor("red")
+        .fontSize(8)
+        .text(verwijzing, box.x + 5, box.y - 15);
     }
-  }
-
-  //data from json
-  //ik kan niet naar hetzelfde grid verwijzen als hierboven
-  //because articles is not defined
-  for (const input of inputs) {
-    const wikiImage = await loadImage(
-      "/images/random-wikipedia-images/" + input.img
-    );
-
-    doc.font("Helvetica").fontSize(18).text(input.title);
-    doc.text(input.about);
-    doc.image(wikiImage, { width: 100 });
-    doc.text(input.body);
   }
 
   // end and display the document in the iframe to the right
