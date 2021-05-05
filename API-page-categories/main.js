@@ -1,14 +1,16 @@
 import "regenerator-runtime/runtime";
 
 const seen = [];
-async function getPage(pageName, count = 20) {
+async function getPage(pageName, count = 10) {
   console.log(pageName);
 
   // Note that we've seen this page.
   seen.push(pageName);
 
   // Fetch the page
-  const url = "https://en.wikipedia.org/api/rest_v1/page/html/" + pageName;
+  const url =
+    "https://en.wikipedia.org/w/api.php?action=query&prop=categories&titles=" +
+    pageName;
   const res = await fetch(url);
   const text = await res.text();
   // console.log(text);
@@ -16,7 +18,9 @@ async function getPage(pageName, count = 20) {
   // Turn the page text into HTML code.
   const div = document.createElement("div");
   div.innerHTML = text;
-  document.body.appendChild(div);
+  //de volgende afzetten als je enkel titels van links wil zien
+  //en niet ook de alle andere tekst
+  //document.body.appendChild(div);
 
   // Get all links
   let links = Array.from(div.querySelectorAll('a[rel="mw:WikiLink"]'));
@@ -61,4 +65,4 @@ async function getPage(pageName, count = 20) {
   }
 }
 
-getPage("catalogue");
+getPage("ski");

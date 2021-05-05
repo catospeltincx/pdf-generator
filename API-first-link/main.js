@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 
 const seen = [];
-async function getPage(pageName, count = 5) {
+async function getPage(pageName, count = 100) {
   console.log(pageName);
 
   // Note that we've seen this page.
@@ -18,7 +18,7 @@ async function getPage(pageName, count = 5) {
   div.innerHTML = text;
   //de volgende afzetten als je enkel titels van links wil zien
   //en niet ook de alle andere tekst
-  document.body.appendChild(div);
+  //document.body.appendChild(div);
 
   // Get all links
   let links = Array.from(div.querySelectorAll('a[rel="mw:WikiLink"]'));
@@ -63,4 +63,4 @@ async function getPage(pageName, count = 5) {
   }
 }
 
-getPage("Scotland");
+getPage("catalogue");
