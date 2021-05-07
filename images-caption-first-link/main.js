@@ -1,8 +1,7 @@
 import "regenerator-runtime/runtime";
-import PDFDocument, { addPage, listeners } from "pdfkit";
+import PDFDocument, { addPage, image, listeners } from "pdfkit";
 import blobStream from "blob-stream";
-//import { moveDown } from "pdfkit/js/mixins/text";
-//import { loadImage } from "../utils/image";
+import { loadImage } from "../utils/image";
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
@@ -16,9 +15,13 @@ async function makePdf() {
   const historys = await res.json();
 
   for (const history of historys) {
+    const wikiImage = await loadImage(
+      "/images/images-first-link/" + history.img
+    );
     doc.font("Times-Roman").text("", 25, 25);
     doc.text(history.cap);
     doc.addPage();
+    doc.image(wikiImage);
   }
 
   // end and display the document in the iframe to the right
