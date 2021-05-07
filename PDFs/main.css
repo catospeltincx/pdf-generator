@@ -50,10 +50,9 @@ a:hover {
 /*BODY*/
 .navigation a {
   font-family: "times";
-  font-size: 1.2rem;
-  background-color: rgb(255, 255, 255);
+  font-size: 4rem;
   margin: 20px;
-  background-color: aquamarine;
+  background-color: rgba(0, 211, 139, 1);
 }
 
 ol {
