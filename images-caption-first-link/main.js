@@ -6,7 +6,7 @@ import { loadImage } from "../utils/image";
 async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [421, 595],
+    size: [419.53, 595.28],
   });
 
   const stream = doc.pipe(blobStream());
@@ -18,9 +18,9 @@ async function makePdf() {
     const wikiImage = await loadImage(
       "/images/images-first-link/" + caption.img
     );
-    doc.font("Times-Roman", 8).text("", 15, 15);
-    doc.text(caption.cap, { width: 100 });
-    doc.image(wikiImage, { height: 500 });
+    doc.font("Times-Roman", 15);
+    doc.image(wikiImage, 0, 140, { height: 500 });
+    doc.text(caption.cap, 15, 15);
     doc.addPage();
   }
 
