@@ -12,16 +12,16 @@ async function makePdf() {
   const stream = doc.pipe(blobStream());
 
   const res = await fetch("/data/images-caption.json");
-  const historys = await res.json();
+  const captions = await res.json();
 
-  for (const history of historys) {
+  for (const caption of captions) {
     const wikiImage = await loadImage(
-      "/images/images-first-link/" + history.img
+      "/images/images-first-link/" + caption.img
     );
-    doc.font("Times-Roman").text("", 25, 25);
-    doc.text(history.cap);
+    doc.font("Times-Roman", 8).text("", 15, 15);
+    doc.text(caption.cap, { width: 100 });
+    doc.image(wikiImage, { height: 500 });
     doc.addPage();
-    doc.image(wikiImage);
   }
 
   // end and display the document in the iframe to the right
