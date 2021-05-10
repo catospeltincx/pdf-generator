@@ -27,7 +27,7 @@ async function makePdf() {
   //define amount of boxes
   //define amount of pages
   const bookPages = 10;
-  const boxCount = 3;
+  const boxCount = 9;
   const boxes = [];
 
   // Make all pages
@@ -51,8 +51,8 @@ async function makePdf() {
     boxes.push({
       index: i,
       page: 1 + Math.floor(Math.random() * bookPages),
-      x: randInt(5, 200),
-      y: randInt(5, 450),
+      x: randInt(10, 180),
+      y: randInt(10, 450),
       article: inputs[articleIndex],
     });
 
@@ -71,27 +71,31 @@ async function makePdf() {
     //geen witte eerste pagina
     doc.switchToPage(box.page - 1);
 
-    doc.font("Times-Roman").fontSize(12);
+    doc.font("Times-Roman").fontSize(10);
 
     //input json
     //quote
-    doc
-      .fillColor("black")
-      .text(box.article.quote, box.x, box.y + 25, { width: 200 });
+    doc.fillColor("black").text(box.article.quote, box.x, box.y + 20, {
+      width: 250,
+    });
 
     //src
-    doc.fillColor("black").text(box.article.src, box.x, box.y);
+    doc
+      .font("Courier")
+      .fontSize(8)
+      .fillColor("black")
+      .text(box.article.src, box.x, box.y);
 
     //box-index
     doc
       .font("Courier")
-      .fontSize(8)
-      .text(box.index, box.x, box.y - 25);
+
+      .text(box.index, box.x, box.y - 10);
 
     const nextBox = boxes.find((b) => box.index + 1 === b.index);
     if (nextBox) {
       const verwijzing = `continue reading at page ${nextBox.page}, number ${nextBox.index}`;
-      doc.text(verwijzing, box.x, box.y + 125);
+      doc.text(verwijzing, box.x + 25, box.y - 10);
     }
   }
 
