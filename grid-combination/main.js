@@ -141,6 +141,8 @@ async function makePdf() {
     }
   }
 
+  console.log(boxes);
+
   // end and display the document in the iframe to the right
   doc.end();
   stream.on("finish", function () {
