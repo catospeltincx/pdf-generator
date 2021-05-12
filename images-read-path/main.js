@@ -1,6 +1,7 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
+import { loadImage } from "../utils/image";
 
 //define min and max (handy for when using random())
 function randInt(min, max) {
@@ -21,13 +22,13 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  const res = await fetch("/data/quote-pieces.json");
+  const res = await fetch("/data/images-read-path.json");
   const inputs = await res.json();
 
   //define amount of boxes
   //define amount of pages
-  const bookPages = 10;
-  const boxCount = 9;
+  const bookPages = 24;
+  const boxCount = 34;
   const boxes = [];
 
   // Make all pages
@@ -44,7 +45,7 @@ async function makePdf() {
       .text(`${page}`, 0, doc.page.maxY() - 10, { align: "center" });
   }
 
-  let articleIndex = 0;
+  let imgIndex = 0;
 
   // define lay-out boxes
   for (let i = 0; i < boxCount; i++) {
@@ -53,12 +54,12 @@ async function makePdf() {
       page: 1 + Math.floor(Math.random() * bookPages),
       x: randInt(10, 180),
       y: randInt(10, 450),
-      article: inputs[articleIndex],
+      image: inputs[imgIndex],
     });
 
-    articleIndex += 1;
-    if (articleIndex >= inputs.length) {
-      articleIndex = 0;
+    imgIndex += 1;
+    if (imgIndex >= inputs.length) {
+      imgIndex = 0;
     }
   }
 
@@ -68,33 +69,17 @@ async function makePdf() {
 
   //Create, 'draw' the boxes
   for (const box of boxes) {
+    const wikiImage = await loadImage(
+      "/images/images-read-path/" + box.image.img
+    );
     //geen witte eerste pagina
     doc.switchToPage(box.page - 1);
 
-    doc.font("Times-Roman").fontSize(10);
-
-    //input json
-    //quote
-    doc.fillColor("black").text(box.article.quote, box.x, box.y + 20, {
-      width: 250,
-    });
-
-    //src
-    doc
-      .font("Courier")
-      .fontSize(8)
-      .fillColor("black")
-      .text(box.article.src, box.x, box.y);
-
-    //box-index
-    doc
-      .font("Courier")
-
-      .text(box.index, box.x, box.y - 10);
+    doc.image(wikiImage, { width: 200 });
 
     const nextBox = boxes.find((b) => box.index + 1 === b.index);
     if (nextBox) {
-      const verwijzing = `continue reading at page ${nextBox.page}, number ${nextBox.index}`;
+      const verwijzing = `${nextBox.page}${nextBox.index}`;
       doc.text(verwijzing, box.x + 25, box.y - 10);
     }
   }
