@@ -27,7 +27,7 @@ async function makePdf() {
 
   //define amount of boxes
   //define amount of pages
-  const bookPages = 24;
+  const bookPages = 100;
   const boxCount = 34;
   const boxes = [];
 
@@ -79,7 +79,7 @@ async function makePdf() {
 
     const nextBox = boxes.find((b) => box.index + 1 === b.index);
     if (nextBox) {
-      const verwijzing = `${nextBox.page}${nextBox.index}`;
+      const verwijzing = `pagina${nextBox.page} boxs${nextBox.index}`;
       doc.text(verwijzing, box.x + 25, box.y - 10);
     }
   }
