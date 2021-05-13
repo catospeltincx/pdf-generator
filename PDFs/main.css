@@ -49,16 +49,10 @@ a:hover {
 
 /*BODY*/
 .navigation a {
-  font-family: "times";
-  font-size: 4rem;
-  margin: 20px;
+  font-family: "Kosugi", sans-serif;
+  font-size: 2rem;
+  margin: 0px;
   background-color: rgba(0, 211, 139, 1);
-}
-
-ol {
-  list-style-type: none;
-}
-
-li {
-  list-style-type: none;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 10px;
 }
