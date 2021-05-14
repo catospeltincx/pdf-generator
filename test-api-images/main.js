@@ -22,12 +22,12 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  const res = await fetch("/data/test-api-images.json");
+  const res = await fetch("/data/images-read-path.json");
   const inputs = await res.json();
 
   //define amount of boxes
   //define amount of pages
-  const bookPages = 100;
+  const bookPages = 3;
   const boxCount = 34;
   const boxes = [];
 
@@ -37,12 +37,6 @@ async function makePdf() {
       size: [PAGE_WIDTH, PAGE_HEIGHT],
       margins: { top: 0, left: 0, bottom: 25, right: 0 },
     });
-
-    // Add pagenumbers in footer
-    doc
-      .fontSize(8)
-      .font("Courier")
-      .text(`${page}`, 0, doc.page.maxY() - 10, { align: "center" });
   }
 
   let imgIndex = 0;
@@ -53,8 +47,8 @@ async function makePdf() {
       index: i,
       //put box on random page
       page: 1 + Math.floor(Math.random() * bookPages),
-      x: randInt(10, 180),
-      y: randInt(10, 450),
+      x: randInt(10, 200),
+      y: randInt(25, 200),
       image: inputs[imgIndex],
     });
 
@@ -71,12 +65,12 @@ async function makePdf() {
   //Create, 'draw' the boxes
   for (const box of boxes) {
     const wikiImage = await loadImage(
-      "/images/test-api-images/" + box.image.img
+      "/images/images-read-path/" + box.image.img
     );
     //geen witte eerste pagina
     doc.switchToPage(box.page - 1);
 
-    doc.image(wikiImage, { width: 200 });
+    doc.image(wikiImage, { height: 50 });
 
     //
     const nextBox = boxes.find((b) => box.index + 1 === b.index);
