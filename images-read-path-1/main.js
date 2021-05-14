@@ -8,13 +8,13 @@ function randInt(min, max) {
   return Math.floor(min + Math.random() * (max - min));
 }
 
-const PAGE_WIDTH = 420;
-const PAGE_HEIGHT = 595;
+const PAGE_WIDTH = 297.64;
+const PAGE_HEIGHT = 419.53;
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: "A5",
+    size: "A6",
     //do not automatically make a first page
     autoFirstPage: false,
     bufferPages: true,
@@ -27,7 +27,7 @@ async function makePdf() {
 
   //define amount of boxes
   //define amount of pages
-  const bookPages = 100;
+  const bookPages = 34;
   const boxCount = 34;
   const boxes = [];
 
@@ -37,12 +37,6 @@ async function makePdf() {
       size: [PAGE_WIDTH, PAGE_HEIGHT],
       margins: { top: 0, left: 0, bottom: 25, right: 0 },
     });
-
-    // Add pagenumbers in footer
-    doc
-      .fontSize(8)
-      .font("Courier")
-      .text(`${page}`, 0, doc.page.maxY() - 10, { align: "center" });
   }
 
   let imgIndex = 0;
@@ -51,12 +45,13 @@ async function makePdf() {
   for (let i = 0; i < boxCount; i++) {
     boxes.push({
       index: i,
-      page: 1 + Math.floor(Math.random() * bookPages),
-      x: randInt(10, 180),
-      y: randInt(10, 450),
+      x: 0,
+      y: 0,
+      page: i + 1,
       image: inputs[imgIndex],
     });
 
+    //voor wat is dit nu weer?
     imgIndex += 1;
     if (imgIndex >= inputs.length) {
       imgIndex = 0;
@@ -75,9 +70,9 @@ async function makePdf() {
     //geen witte eerste pagina
     doc.switchToPage(box.page - 1);
 
-    doc.image(wikiImage, { width: 200 });
+    doc.image(wikiImage, box.x, box.y, { height: 419.53 });
 
-    const nextBox = boxes.find((b) => box.index + 1 === b.index);
+    const nextBox = box.index + 1;
     if (nextBox) {
       const verwijzing = `pagina${nextBox.page} boxs${nextBox.index}`;
       doc.text(verwijzing, box.x + 25, box.y - 10);

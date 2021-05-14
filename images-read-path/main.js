@@ -51,6 +51,7 @@ async function makePdf() {
   for (let i = 0; i < boxCount; i++) {
     boxes.push({
       index: i,
+      //put box on random page
       page: 1 + Math.floor(Math.random() * bookPages),
       x: randInt(10, 180),
       y: randInt(10, 450),
@@ -77,6 +78,7 @@ async function makePdf() {
 
     doc.image(wikiImage, { width: 200 });
 
+    //
     const nextBox = boxes.find((b) => box.index + 1 === b.index);
     if (nextBox) {
       const verwijzing = `pagina${nextBox.page} boxs${nextBox.index}`;
