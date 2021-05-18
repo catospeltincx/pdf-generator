@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-import { loadImage } from "../utils/image";
+import { loadImage } from "/utils/image";
 
 async function makePdf() {
   const iframe = document.querySelector("iframe");
