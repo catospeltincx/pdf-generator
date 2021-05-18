@@ -1,0 +1,13 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.image-with-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-with-caption span {
+  font-size: 11px;
+}
