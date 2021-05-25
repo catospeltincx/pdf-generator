@@ -11,10 +11,20 @@ async function makePdf(images) {
 
   const stream = doc.pipe(blobStream());
 
+  let columnIndex = 0;
+
+  let rowIndex = 0;
+
+  let columns = [0, 50, 100];
+
+  let rows = [0, 100, 150, 200];
+
   //.slice om niet alles te weergeven
   for (const imageObject of images.slice(0, 1000)) {
+    const x = columns[columnIndex];
+    const y = rows[rowIndex];
     const image = await loadImage(imageObject.src);
-    doc.image(image, { width: 300 });
+    doc.image(image, x, y, { width: 50 });
     doc.text(imageObject.caption);
   }
 

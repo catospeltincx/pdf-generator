@@ -11,14 +11,30 @@ async function makePdf(images) {
 
   const stream = doc.pipe(blobStream());
 
+  let x = 0;
+  let y = 0;
+
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 100)) {
+  for (const imageObject of images.slice(0, 50)) {
     const image = await loadImage(imageObject.src);
     //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, 0, 15, { width: 300 });
+    doc.image(image, x, y, { width: 500 });
     //de caption
-    doc.text(imageObject.caption, { width: 100 });
+    doc.fontSize(8).text(imageObject.caption, x, y - 50, { width: 50 });
+
+    //elke kolom is 100px breed
+    x += 200;
+    //de afbeeldingen schuin naar beneden laten gaan
+    y += 10;
+    if (x >= 421) {
+      x = 0;
+      y += 150;
+      if (y >= 595) {
+        y = 0;
+        doc.addPage();
+      }
+    }
   }
 
   // end and display the document in the iframe to the right
@@ -40,3 +56,10 @@ document.getElementById("file").addEventListener("change", (e) => {
     .then((res) => res.json())
     .then((json) => makePdf(json));
 });
+
+//om snel te testen
+
+const jsonUrl = "/data/all-images.json";
+fetch(jsonUrl)
+  .then((res) => res.json())
+  .then((json) => makePdf(json));
