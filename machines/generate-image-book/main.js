@@ -6,7 +6,7 @@ import { loadImage } from "../../utils/image";
 async function makePdf(images) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [421, 595],
+    size: [400, 640],
   });
 
   const stream = doc.pipe(blobStream());
@@ -16,21 +16,22 @@ async function makePdf(images) {
 
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 50)) {
+  for (const imageObject of images.slice(0, 5000)) {
     const image = await loadImage(imageObject.src);
+    // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, x, y, { width: 500 });
+    doc.image(image, x, y, { width: 200 });
     //de caption
-    doc.fontSize(8).text(imageObject.caption, x, y - 50, { width: 50 });
+    //doc.fontSize(8).text(imageObject.caption, x, y - 10, { width: 50 });
 
     //elke kolom is 100px breed
-    x += 200;
+    x += 100;
     //de afbeeldingen schuin naar beneden laten gaan
-    y += 10;
-    if (x >= 421) {
+    y += 5;
+    if (x >= 385) {
       x = 0;
-      y += 150;
-      if (y >= 595) {
+      y += 100;
+      if (y >= 625) {
         y = 0;
         doc.addPage();
       }
@@ -58,8 +59,9 @@ document.getElementById("file").addEventListener("change", (e) => {
 });
 
 //om snel te testen
+//met een json op in public map
 
-const jsonUrl = "/data/all-images.json";
-fetch(jsonUrl)
-  .then((res) => res.json())
-  .then((json) => makePdf(json));
+// const jsonUrl = "/data/all-images.json";
+// fetch(jsonUrl)
+//   .then((res) => res.json())
+//   .then((json) => makePdf(json));

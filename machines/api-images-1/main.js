@@ -21,9 +21,9 @@ function downloadText(text, filename) {
 //als die er al is, overslaan
 const seenImages = new Set();
 
-// een ljson lijst maken van al die images
+// een json lijst maken van al die images
 async function loadImagesForPages(pages) {
-  console.log(pages);
+  // console.log(pages);
   const allImageObjects = [];
   //voor elke pagina alle images loaden
   for (const pageName of pages) {
@@ -37,7 +37,7 @@ async function loadImagesForPages(pages) {
 }
 
 async function loadImagesForPage(pageName, count = 100) {
-  console.log(pageName);
+  // console.log(pageName);
 
   const imageObjects = [];
 
@@ -62,6 +62,7 @@ async function loadImagesForPage(pageName, count = 100) {
   for (const thumb of thumbs) {
     //alle images aanduiden
     const image = thumb.querySelector("img");
+    console.log("image");
     //als er geen image is in een gallery box --> skip
     if (!image) continue;
     if (seenImages.has(image.src)) continue;
