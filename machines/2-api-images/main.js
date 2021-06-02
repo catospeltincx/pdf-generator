@@ -139,3 +139,8 @@ document.getElementById("file").addEventListener("change", (e) => {
     .then((res) => res.json())
     .then((json) => loadImagesForPages(json));
 });
+
+const jsonUrl = "/data/links-for-images.json";
+fetch(jsonUrl)
+  .then((res) => res.json())
+  .then((json) => loadImagesForPages(json));

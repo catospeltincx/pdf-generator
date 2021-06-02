@@ -41,10 +41,13 @@ async function getPage(pageName, count = 100) {
   const div = document.createElement("div");
   div.innerHTML = text;
   //zet aan om de volledige html pagina te kunnen zien
-  //document.body.appendChild(div);
+  document.body.appendChild(div);
 
   // Get all links
-  let links = Array.from(div.querySelectorAll('a[rel="mw:WikiLink"]'));
+  let links = Array.from(
+    div.querySelectorAll('figcaption a[rel="mw:WikiLink"]')
+  );
+  //- figcaption --> neemt de links in de captions van de beelden, plaats dit in de js van de folder: 4-api-caption-links
 
   //vanaf hier is het opkuisen
   //alle pagina namen eruit halen
@@ -83,7 +86,7 @@ async function getPage(pageName, count = 100) {
     //maakt de inner html
     pageNameDiv.innerHTML = pageName;
     //voegt het toe
-    document.body.appendChild(pageNameDiv);
+    //document.body.appendChild(pageNameDiv);
   }
 
   //json uit laten rollen
@@ -94,7 +97,7 @@ async function getPage(pageName, count = 100) {
   //iets mee doen
   //hier: als een file laten downloaden door de gebruiker
   //verander hier ook de file-name
-  downloadText(JSON.stringify(json), "page-links.json");
+  downloadText(JSON.stringify(json), "links-for-images.json");
 }
 
 // getPage("catalogue");
