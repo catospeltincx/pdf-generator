@@ -1,12 +1,12 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-import { loadImage } from "../../../utils/image";
 
 async function makePdf(captions) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [400, 640],
+    size: [510, 383],
+    margins: { top: 164, left: 0, bottom: 0, right: 237 },
   });
 
   const stream = doc.pipe(blobStream());
@@ -16,18 +16,18 @@ async function makePdf(captions) {
 
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of captions.slice(0, 5000)) {
-    const image = await loadImage(imageObject.src);
+  for (const captionObject of captions.slice(0, 5000)) {
+    //const image = await loadImage(imageObject.src);
     //de caption
-    //doc.fontSize(8).text(imageObject.caption, x, y - 10, { width: 50 });
+    doc.fontSize(17).text(captionObject.caption, x, y);
 
     //elke kolom is 100px breed
-    x += 25;
+    x += 300;
     //de afbeeldingen schuin naar beneden laten gaan
-    y += 5;
+    //y += 5;
     if (x >= 625) {
       x = 0;
-      y += 25;
+      y += 200;
       if (y >= 375) {
         y = 0;
         doc.addPage();
@@ -58,7 +58,7 @@ document.getElementById("file").addEventListener("change", (e) => {
 //om snel te testen
 //met een json op in public map
 
-// const jsonUrl = "/data/all-images.json";
-// fetch(jsonUrl)
-//   .then((res) => res.json())
-//   .then((json) => makePdf(json));
+const jsonUrl = "/data/all-images.json";
+fetch(jsonUrl)
+  .then((res) => res.json())
+  .then((json) => makePdf(json));

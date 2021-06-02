@@ -1,13 +1,12 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-import { loadImage } from "../../utils/image";
+import { loadImage } from "../../../utils/image";
 
 async function makePdf(images) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: [1191, 842],
-    margins: { top: 50, bottom: 50, left: 72, right: 72 },
   });
 
   const stream = doc.pipe(blobStream());
