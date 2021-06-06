@@ -26,7 +26,7 @@ async function loadImagesForPages(pages) {
   // console.log(pages);
   const allImageObjects = [];
   //voor elke pagina alle images loaden
-  for (const pageName of pages) {
+  for (const pageName of pages.slice(0, 100)) {
     const imageObjects = await loadImagesForPage(pageName);
     //om lijst in lijst te vermijden
     //steek de elementen van de lijst erin
@@ -114,11 +114,14 @@ async function loadImagesForPage(pageName, count = 100) {
     });
   }
 
+  //download json
+  //why is this here?
+  //first there was 'pageName' instead of 'thumb'
   // const json = [];
-  // for (const pageName of pageNames) {
-  //   json.push(pageName);
+  // for (const thumb of thumbs) {
+  //   json.push(thumb);
   // }
-  // downloadText(JSON.stringify(json), "page-links.json");
+  // downloadText(JSON.stringify(json), "images.json");
 
   //
   return imageObjects;
@@ -140,7 +143,7 @@ document.getElementById("file").addEventListener("change", (e) => {
     .then((json) => loadImagesForPages(json));
 });
 
-const jsonUrl = "/data/links-for-images.json";
+const jsonUrl = "/data/page-links-to-test.json";
 fetch(jsonUrl)
   .then((res) => res.json())
   .then((json) => loadImagesForPages(json));
