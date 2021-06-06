@@ -52,7 +52,7 @@ async function loadImagesForPage(pageName, count = 100) {
   div.innerHTML = text;
   //de volgende afzetten als je enkel titels van links wil zien
   //en niet ook de alle andere tekst
-  //   document.body.appendChild(div);
+  //document.body.appendChild(div);
 
   // Get all thumbs
   let thumbs = Array.from(div.querySelectorAll(".gallerybox"));
