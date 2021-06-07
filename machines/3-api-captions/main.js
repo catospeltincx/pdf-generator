@@ -33,10 +33,7 @@ async function loadImagesForPages(pages) {
     allImageObjects.push(...imageObjects);
   }
   //verander hier de file name
-  downloadText(
-    JSON.stringify(allImageObjects),
-    "test-images-for-captions.json"
-  );
+  downloadText(JSON.stringify(allImageObjects), "captions-for-links.json");
 }
 
 async function loadImagesForPage(pageName, count = 100) {

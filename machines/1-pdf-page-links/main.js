@@ -15,15 +15,13 @@ async function makePdf(pageLinks) {
   let x = 0;
   let y = 465;
 
-  //
   //.slice om niet alles te weergeven
-  for (const pageLink of pageLinks.slice(0, 800)) {
-    //const image = await loadImage(imageObject.src);
-    // console.log("image");
-    //wanneer x en y meegegeven, blijven ze plakken
-    //doc.image(image, x, y, { width: 200 });
-    //de caption
-    doc.fontSize(8).text(pageLink, x, y - 10, { width: 50 });
+  for (const pageLink of pageLinks) {
+    //de page-link
+    doc
+      .font("Times-Roman")
+      .fontSize(15)
+      .text(pageLink, x, y - 10, { width: 50 });
 
     //elke kolom is 50px breed
     x += 50;
@@ -63,7 +61,7 @@ document.getElementById("file").addEventListener("change", (e) => {
 //om snel te testen
 //met een json op in public map
 
-// const jsonUrl = "/data/all-images.json";
-// fetch(jsonUrl)
-//   .then((res) => res.json())
-//   .then((json) => makePdf(json));
+const jsonUrl = "/data/book-page-links.json";
+fetch(jsonUrl)
+  .then((res) => res.json())
+  .then((json) => makePdf(json));
