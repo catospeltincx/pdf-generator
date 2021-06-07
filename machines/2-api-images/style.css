@@ -1,0 +1,21 @@
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: masonry;
+}
+
+.image-with-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-with-caption span {
+  font-size: 11px;
+}
