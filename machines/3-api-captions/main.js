@@ -1,66 +1,152 @@
 import "regenerator-runtime/runtime";
-import PDFDocument from "pdfkit";
-import blobStream from "blob-stream";
 
-async function makePdf(captions) {
-  const iframe = document.querySelector("iframe");
-  const doc = new PDFDocument({
-    size: [510, 383],
-    margins: { top: 164, left: 0, bottom: 0, right: 237 },
+console.log("images");
+
+function downloadText(text, filename) {
+  const blob = new Blob([text], {
+    type: "text/plain;charset=utf-8",
   });
-
-  const stream = doc.pipe(blobStream());
-
-  let x = 0;
-  let y = 0;
-
-  //
-  //.slice om niet alles te weergeven
-  for (const captionObject of captions.slice(0, 5000)) {
-    //const image = await loadImage(imageObject.src);
-    //de caption
-
-    //.font("public/fonts/Kosugi-Regular.ttf")
-    doc.fontSize(17).text(captionObject.caption, x, y);
-
-    //elke kolom is 100px breed
-    x += 300;
-    //de afbeeldingen schuin naar beneden laten gaan
-    //y += 5;
-    if (x >= 625) {
-      x = 0;
-      y += 200;
-      if (y >= 375) {
-        y = 0;
-        doc.addPage();
-      }
-    }
-  }
-
-  // end and display the document in the iframe to the right
-  doc.end();
-  stream.on("finish", function () {
-    iframe.src = stream.toBlobURL("application/pdf");
-  });
+  const url = window.URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.style = "display: none";
+  document.body.appendChild(a);
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+  document.body.removeChild(a);
 }
 
-//dealen met json lijst images
-//
+//geen dubbele images van de verschillende fetches in de lijst hebben
+//als die er al is, overslaan
+const seenImages = new Set();
+
+// een json lijst maken van al die images
+async function loadImagesForPages(pages) {
+  // console.log(pages);
+  const allImageObjects = [];
+  //voor elke pagina alle images loaden
+  for (const pageName of pages.slice(0, 100)) {
+    const imageObjects = await loadImagesForPage(pageName);
+    //om lijst in lijst te vermijden
+    //steek de elementen van de lijst erin
+    allImageObjects.push(...imageObjects);
+  }
+  //verander hier de file name
+  downloadText(
+    JSON.stringify(allImageObjects),
+    "test-images-for-captions.json"
+  );
+}
+
+async function loadImagesForPage(pageName, count = 100) {
+  // console.log(pageName);
+
+  const imageObjects = [];
+
+  // Fetch the page
+  const url = "https://en.wikipedia.org/api/rest_v1/page/html/" + pageName;
+  const res = await fetch(url);
+  const text = await res.text();
+  // console.log(text);
+
+  // Turn the page text into HTML code.
+  const div = document.createElement("div");
+  div.innerHTML = text;
+  //de volgende afzetten als je enkel titels van links wil zien
+  //en niet ook de alle andere tekst
+  //document.body.appendChild(div);
+
+  // Get all thumbs
+  let thumbs = Array.from(div.querySelectorAll(".gallerybox"));
+  console.log(thumbs);
+
+  //alle images met captions bij
+  for (const thumb of thumbs) {
+    //alle images aanduiden
+    //const image = thumb.querySelector("img");
+    console.log("image");
+    //als er geen image is in een gallery box --> skip
+    if (!image) continue;
+    if (seenImages.has(image.src)) continue;
+    seenImages.add(image.src);
+    //get the captions
+    const captionDiv = thumb.querySelector(".gallerytext");
+    //kijken of die caption div echt bestaat
+    //en daar dan de caption uithalen
+    let caption = "";
+    if (captionDiv) {
+      caption = captionDiv.textContent;
+    }
+
+    //opzoek naar het grid
+    const grid = document.querySelector(".grid");
+    //per beeld een div
+    const div = document.createElement("div");
+    //naam div die we in css dus kunnen aanspreken
+    div.className = "image-with-caption";
+    div.appendChild(image);
+    const span = document.createElement("span");
+    //span.textContent = caption;
+    div.appendChild(span);
+    //alle gegevens die we van die image bijhouden
+    grid.appendChild(div);
+    imageObjects.push({
+      src: image.src,
+      caption: caption,
+      page: pageName,
+    });
+  }
+
+  //ook alle images die we ervoor overgeslagen hebben
+  //die geen captions hebben
+  //ALLE images,
+  //Ook icoontjes enzo
+  let images = Array.from(div.querySelectorAll("img"));
+  for (const image of images) {
+    //de images die we al gezien hebben niet dubbel nemen
+    if (seenImages.has(image.src)) continue;
+    //toevoegen aan de lijst van images die we al gemaakt hebben
+    seenImages.add(image.src);
+    const grid = document.querySelector(".grid");
+    grid.appendChild(image);
+    imageObjects.push({
+      src: image.src,
+      caption: "",
+      page: pageName,
+    });
+  }
+
+  //download json
+  //why is this here?
+  //first there was 'pageName' instead of 'thumb'
+  // const json = [];
+  // for (const thumb of thumbs) {
+  //   json.push(thumb);
+  // }
+  // downloadText(JSON.stringify(json), "images.json");
+
+  //
+  return imageObjects;
+}
+
+// een input veld, search bar die vertrekt vanaf een file
 document.getElementById("file").addEventListener("change", (e) => {
-  //we nemen de file
+  //files 'toelaten'
+  //wij laten er hier maar eentje toe
+  //haalt de files eruit
   const file = e.target.files[0];
-  //de data van de json
-  const jsonUrl = URL.createObjectURL(file);
-  //als de json geladen is, is er een lijst van alle images
-  fetch(jsonUrl)
+  // console.log(file);
+  // console.log(imageUrl);
+  // console.log("input");
+  // console.log(e);
+  const imageUrl = URL.createObjectURL(file);
+  fetch(imageUrl)
     .then((res) => res.json())
-    .then((json) => makePdf(json));
+    .then((json) => loadImagesForPages(json));
 });
 
-//om snel te testen
-//met een json op in public map
-
-const jsonUrl = "/data/all-images.json";
-fetch(jsonUrl)
-  .then((res) => res.json())
-  .then((json) => makePdf(json));
+// const jsonUrl = "/data/page-links-to-test.json";
+// fetch(jsonUrl)
+//   .then((res) => res.json())
+//   .then((json) => loadImagesForPages(json));
