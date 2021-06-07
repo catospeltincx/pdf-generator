@@ -21,9 +21,9 @@ async function makePdf(images) {
     const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, x, y, { width: 200 });
+    //doc.image(image, x, y, { width: 200 });
     //de caption
-    //doc.fontSize(8).text(imageObject.caption, x, y - 10, { width: 50 });
+    doc.fontSize(8).text(imageObject.caption, x, y - 10, { width: 50 });
 
     //elke kolom is 50px breed
     x += 50;

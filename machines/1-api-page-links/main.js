@@ -41,7 +41,7 @@ async function getPage(pageName, count = 100) {
   const div = document.createElement("div");
   div.innerHTML = text;
   //zet aan om de volledige html pagina te kunnen zien
-  document.body.appendChild(div);
+  //document.body.appendChild(div);
 
   // Get all links
   let links = Array.from(div.querySelectorAll('a[rel="mw:WikiLink"]'));

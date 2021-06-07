@@ -1,9 +1,9 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-import { loadImage } from "../../utils/image";
+//import { loadImage } from "../../utils/image";
 
-async function makePdf(images) {
+async function makePdf(pageLinks) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: [1191, 842],
@@ -17,13 +17,13 @@ async function makePdf(images) {
 
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 800)) {
-    const image = await loadImage(imageObject.src);
+  for (const pageLink of pageLinks.slice(0, 800)) {
+    //const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, x, y, { width: 200 });
+    //doc.image(image, x, y, { width: 200 });
     //de caption
-    //doc.fontSize(8).text(imageObject.caption, x, y - 10, { width: 50 });
+    doc.fontSize(8).text(pageLink, x, y - 10, { width: 50 });
 
     //elke kolom is 50px breed
     x += 50;
