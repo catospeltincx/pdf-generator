@@ -63,7 +63,7 @@ document.getElementById("file").addEventListener("change", (e) => {
 //om snel te testen
 //met een json op in public map
 
-const jsonUrl = "/data/all-images.json";
-fetch(jsonUrl)
-  .then((res) => res.json())
-  .then((json) => makePdf(json));
+// const jsonUrl = "/data/all-images.json";
+// fetch(jsonUrl)
+//   .then((res) => res.json())
+//   .then((json) => makePdf(json));

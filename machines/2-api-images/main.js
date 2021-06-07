@@ -1,15 +1,35 @@
 import "regenerator-runtime/runtime";
 console.log("images");
 
-function loadImagesForPages(pages) {
+function downloadText(text, filename) {
+  const blob = new Blob([text], {
+    type: "text/plain;charset=utf-8",
+  });
+  const url = window.URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.style = "display: none";
+  document.body.appendChild(a);
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+  document.body.removeChild(a);
+}
+
+async function loadImagesForPages(pages) {
   console.log(pages);
+  const allImageObjects = [];
   for (const pageName of pages.slice(0, 1)) {
-    loadImagesForPage(pageName);
+    const imageObjects = await loadImagesForPage(pageName);
+    allImageObjects.push(...imageObjects);
   }
+  downloadText(JSON.stringify(allImageObjects), "images-for-captions.json");
 }
 
 async function loadImagesForPage(pageName, count = 100) {
   console.log(pageName);
+
+  const imageObjects = [];
 
   // Fetch the page
   const url = "https://en.wikipedia.org/api/rest_v1/page/html/" + pageName;
@@ -32,15 +52,20 @@ async function loadImagesForPage(pageName, count = 100) {
   for (const image of images) {
     const grid = document.querySelector(".grid");
     grid.appendChild(image);
+    imageObjects.push({
+      src: image.src,
+    });
   }
 
   //json uit laten rollen
-  const json = [];
-  for (const pageName of pageNames) {
-    json.push(pageName);
-  }
+  // const json = [];
+  // for (const pageName of pageNames) {
+  //   json.push(pageName);
+  // }
 
-  downloadText(JSON.stringify(json), "images-for-captions.json");
+  // downloadText(JSON.stringify(json), "images-for-captions.json");
+
+  return imageObjects;
 }
 
 document.getElementById("file").addEventListener("change", (e) => {
