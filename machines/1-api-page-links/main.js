@@ -70,6 +70,9 @@ async function getPage(pageName, count = 100) {
   pageNames = pageNames.filter((pageName) => !pageName.includes("Portal:"));
   pageNames = pageNames.filter((pageName) => !pageName.includes("Category:"));
   pageNames = pageNames.filter(
+    (pageName) => !pageName.includes("Template_talk:")
+  );
+  pageNames = pageNames.filter(
     (pageName) => !pageName.includes("Wikipedia_talk:")
   );
   pageNames = pageNames.filter((pageName) => !pageName.includes("MOS:"));
