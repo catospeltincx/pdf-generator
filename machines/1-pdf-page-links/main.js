@@ -6,7 +6,7 @@ import blobStream from "blob-stream";
 async function makePdf(pageLinks) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [595, 842],
+    size: [842, 595],
     //margins: { top: 50, bottom: 50, left: 72, right: 72 },
   });
 
@@ -18,18 +18,18 @@ async function makePdf(pageLinks) {
   //.slice om niet alles te weergeven
   for (const pageLink of pageLinks) {
     //de page-link
-    doc.font("Times-Roman").fontSize(10).text(pageLink, x, y, { width: 100 });
+    doc.font("Courier").fontSize(25).text(pageLink, x, y, { width: 180 });
 
     //elke kolom is 50px breed
-    x += 110;
+    x += 200;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 20;
-    if (x >= 500) {
+    if (x >= 750) {
       x = 25;
-      y += 5;
+      y += 130;
       //deze moet korter zijn dan de lengte van de pagina
       //lengte van pagina
-      if (y >= 700) {
+      if (y >= 400) {
         y = 25;
         doc.addPage();
       }
@@ -59,7 +59,7 @@ document.getElementById("file").addEventListener("change", (e) => {
 //om snel te testen
 //met een json op in public map
 
-const jsonUrl = "/data/book-page-links.json";
+const jsonUrl = "/data/order-page-links.json";
 fetch(jsonUrl)
   .then((res) => res.json())
   .then((json) => makePdf(json));

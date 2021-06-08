@@ -27,7 +27,8 @@ function downloadText(text, filename) {
   document.body.removeChild(a);
 }
 
-async function getPage(pageName, count = 100) {
+//, count = 100
+async function getPage(pageName) {
   console.log(pageName);
 
   // Fetch the page
@@ -98,7 +99,7 @@ async function getPage(pageName, count = 100) {
   //iets mee doen
   //hier: als een file laten downloaden door de gebruiker
   //verander hier ook de file-name
-  downloadText(JSON.stringify(json), "book-page-links.json");
+  downloadText(JSON.stringify(json), "order-page-links.json");
 }
 
 // getPage("catalogue");
