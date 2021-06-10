@@ -99,7 +99,7 @@ async function getPage(pageName) {
   //iets mee doen
   //hier: als een file laten downloaden door de gebruiker
   //verander hier ook de file-name
-  downloadText(JSON.stringify(json), "encyclopedia-page-links.json");
+  downloadText(JSON.stringify(json), "page-links-X.json");
 }
 
 // getPage("catalogue");

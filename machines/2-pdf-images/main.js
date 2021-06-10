@@ -21,17 +21,18 @@ async function makePdf(images) {
     const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, x, y, { height: 595 });
+    doc.image(image, x, y, { width: 1191 });
     //de caption
     //doc.fontSize(8).text(imageObject.caption, x, y, { width: 100 });
 
-    //elke kolom is 50px breed
-    x += 595;
+    //breedte kolom
+    x += 1191;
     //de afbeeldingen schuin naar beneden laten gaan
-    //y += 200;
+    //y += 7;
     if (x >= 1100) {
       x = 0;
-      y += 200;
+      //hoogte rij
+      y += 842;
       //lengte van pagina
       if (y >= 800) {
         y = 0;

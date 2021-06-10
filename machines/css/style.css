@@ -1,6 +1,11 @@
 p {
   margin: 0;
   color: red;
+  font-size: 20px;
+}
+
+a {
+  font-size: 20px;
 }
 
 .machines {
@@ -38,4 +43,9 @@ img {
 
 .image-with-caption span {
   font-size: 11px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
 }

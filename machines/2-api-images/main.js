@@ -33,10 +33,10 @@ async function loadImagesForPages(pages) {
     allImageObjects.push(...imageObjects);
   }
   //verander hier de file name
-  downloadText(JSON.stringify(allImageObjects), "images-for-captions.json");
+  downloadText(JSON.stringify(allImageObjects), "images-order.json");
 }
-
-async function loadImagesForPage(pageName, count = 100) {
+//(, count)
+async function loadImagesForPage(pageName) {
   // console.log(pageName);
 
   const imageObjects = [];
