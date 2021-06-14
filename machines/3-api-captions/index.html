@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css">
-    <title>captions</title>
+    <title>Caption collector</title>
   </head>
-  <p>Select <mark>a images-for-captions.json</mark> file</p>
+
+  <header>
+    <h2 id="data-collectors">data-collector</h2>
+  </header>
+
 </br>
   <body>
-    <input type="file" id="file" />
+    <p class="title">3 &mdash; Captions Collector</p>
+    
     <div class="nav">
-      <a href="/machines/3-pdf-captions/index.html">create a captions PDF</a>
+      <input type="file" id="file" />
+      <a class="maker" href="../3-pdf-captions/index.html"
+        >3 &mdash; Captions book maker</a
+      >
+      <div id="arrows-single" class="arrows">
+        <p class="arrow">&#8601;</p>
+      </div>
+    
     </div>
     <script src="./main.js"></script>
   </body>
