@@ -1,27 +1,91 @@
+body {
+  margin: 0;
+  background-color: rgb(242, 242, 242);
+}
+
+@font-face {
+  font-family: "CutMeOut.ttf";
+  src: url(/fonts/CutMeOut2.ttf);
+}
+
 p {
   margin: 0;
   color: red;
-  font-size: 20px;
 }
 
-a {
-  font-size: 20px;
+a.collector,
+a.maker {
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+  padding: 25px;
+}
+
+a.collector:hover,
+a.maker:hover {
+  color: rgb(61, 255, 107);
+}
+
+/*START-PAGE*/
+h2 {
+  font-family: "CutMeOut.ttf";
+  padding: 25px;
+  font-size: 3rem;
+  margin: 0;
+  color: rgb(69, 91, 216);
+  background-color: black;
 }
 
 .machines {
   display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100vw;
+}
+
+.collectors,
+.makers {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+}
+
+.collector,
+.maker {
+  width: 33.33%;
+  background-color: white;
+  margin: 0px 25px 0px 25px;
+}
+
+.arrows {
+  display: flex;
   flex-direction: row;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding-left: 7rem;
 }
 
-.machine {
-  display: flex;
-  flex-direction: column;
-  padding-right: 50px;
+p.arrow {
+  width: 33.33vw;
+  font-size: 4rem;
 }
+
+/* COLLECTORS, MAKERS */
+h1 {
+  margin: 25px 0 0 25px;
+}
+
+input {
+  margin: 25px 0 0 25px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+}
+
+/* 2-API-IMAGES */
 
 img {
   max-width: 100%;
@@ -43,9 +107,4 @@ img {
 
 .image-with-caption span {
   font-size: 11px;
-}
-
-.nav {
-  display: flex;
-  flex-direction: column;
 }

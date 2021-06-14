@@ -7,34 +7,36 @@ async function makePdf(images) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: [1191, 842],
-    margins: { top: 50, bottom: 50, left: 72, right: 72 },
   });
 
   const stream = doc.pipe(blobStream());
 
-  let x = 0;
-  let y = 465;
+  let x = 50;
+  let y = 0;
 
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 800)) {
+  for (const imageObject of images) {
     const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
     //doc.image(image, x, y, { width: 200 });
     //de caption
-    doc.fontSize(8).text(imageObject.caption, x, y - 10, { width: 50 });
+    doc
+      .font("Times-Roman")
+      .fontSize(45)
+      .text(imageObject.caption, x + 10, y + 10, { width: 470 });
 
     //elke kolom is 50px breed
-    x += 50;
+    x += 595;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 5;
-    if (x >= 510) {
-      x = 0;
-      y += 50;
+    if (x >= 1100) {
+      x = 50;
+      y += 842;
       //lzngte van pagina
-      if (y >= 842) {
-        y = 465;
+      if (y >= 800) {
+        y = 0;
         doc.addPage();
       }
     }
