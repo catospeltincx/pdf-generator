@@ -33,7 +33,7 @@ async function loadImagesForPages(pages) {
     allImageObjects.push(...imageObjects);
   }
   //verander hier de file name
-  downloadText(JSON.stringify(allImageObjects), "images-order.json");
+  downloadText(JSON.stringify(allImageObjects), "images.json");
 }
 //(, count)
 async function loadImagesForPage(pageName) {

@@ -83,7 +83,7 @@ p.arrow {
   color: red;
 }
 
-/* COLLECTORS, MAKERS */
+/* COLLECTORS */
 #arrows-single {
   top: 50px;
   left: 350px;
@@ -122,6 +122,25 @@ form {
 .nav {
   display: flex;
   flex-direction: row;
+}
+
+/* BOOK-MAKERS */
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+iframe {
+  margin: 15px;
+  background-color: white;
+}
+
+p.under-title {
+  font-size: 1rem;
+  color: black;
+  padding-top: 0.5rem;
+  font-style: italic;
 }
 
 /* 2-API-IMAGES */

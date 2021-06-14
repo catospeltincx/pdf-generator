@@ -59,7 +59,7 @@ document.getElementById("file").addEventListener("change", (e) => {
 //om snel te testen
 //met een json op in public map
 
-const jsonUrl = "/data/order-page-links.json";
-fetch(jsonUrl)
-  .then((res) => res.json())
-  .then((json) => makePdf(json));
+// const jsonUrl = "/data/PageLinks.json";
+// fetch(jsonUrl)
+//   .then((res) => res.json())
+//   .then((json) => makePdf(json));
