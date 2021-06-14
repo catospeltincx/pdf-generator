@@ -4,16 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2-api-images</title>
+    <title>Image collector</title>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
+
+  <header>
+    <h2 id="data-collectors">data-collector</h2>
+  </header>
+
   <body>
-    <p>Select <mark>a images-X.json</mark> file</p>
-  </br>
-    <input type="file" id="file" />
+    <p class="title">2 &mdash; Images Collector</p>
     <div class="nav">
-      <a href="/machines/3-api-captions/index.html">collect all the captions of all this images</a>
-      <a href="/machines/2-pdf-images/index.html">create a images PDF</a>
+      <input type="file" id="file" />
+
+      <a class="collector" href="../3-api-captions/index.html"
+        >3 &mdash; Captions collector</a
+      >
+      <a class="maker" href="../2-pdf-images/index.html"
+        >2 &mdash; Images book maker</a
+      >
+    </div>
+    <div id="arrows-single" class="arrows">
+      <p class="arrow">&#8601;</p>
+      <p class="arrow">&#8601;</p>
     </div>
     <div class="grid"></div>
     <script src="./main.js"></script>

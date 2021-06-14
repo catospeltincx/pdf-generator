@@ -3,10 +3,6 @@ body {
   background-color: rgb(242, 242, 242);
 }
 
-header {
-  margin: 0 0 0 -25px;
-}
-
 @font-face {
   font-family: "CutMeOut.ttf";
   src: url(/fonts/CutMeOut2.ttf);
@@ -70,7 +66,7 @@ a.maker:hover {
 .maker {
   width: 33.33%;
   background-color: white;
-  margin: 0 1rem 0 1rem;
+  margin: 0 3.5rem 0 3.5rem;
 }
 
 .arrows {
@@ -126,7 +122,6 @@ form {
 .nav {
   display: flex;
   flex-direction: row;
-  width: 50vw;
 }
 
 /* 2-API-IMAGES */
