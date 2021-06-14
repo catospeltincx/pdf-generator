@@ -1,6 +1,10 @@
 body {
-  margin: 0;
+  margin: 0 0 0 25px;
   background-color: rgb(242, 242, 242);
+}
+
+header {
+  margin: 0 0 0 -25px;
 }
 
 @font-face {
@@ -9,7 +13,7 @@ body {
 }
 
 p {
-  margin: 0 0 0 25px;
+  margin: 0;
   color: rgb(0, 0, 0);
 }
 
@@ -18,7 +22,7 @@ h2 {
   font-family: "CutMeOut.ttf";
   padding: 15px;
   font-size: 2rem;
-  margin: 0;
+  margin: 0 0 0 0;
   background-color: black;
 }
 
@@ -82,26 +86,39 @@ p.arrow {
 }
 
 /* COLLECTORS, MAKERS */
+#arrows-single {
+  top: 50px;
+  left: 350px;
+}
 p.title {
-  font-size: 2rem;
+  font-size: 1.3rem;
   text-decoration: none;
   color: black;
   padding-top: 25px;
 }
 
 input {
-  margin: 25px 0 25px 25px;
+  margin: 25px 0 25px 0;
   border: 2px inset;
   font-family: monospace;
-  width: 15em;
+  font-style: italic;
+  width: 10rem;
+  height: 2rem;
   padding: 1px 0px 1px 0px;
   background-color: white;
   outline: none;
-  cursor: pointer;
 }
 
 input.button {
   border: outset;
+  cursor: pointer;
+  background-color: aqua;
+  margin-left: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
 }
 
 .nav {
