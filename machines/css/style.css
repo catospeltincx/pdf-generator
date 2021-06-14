@@ -16,15 +16,15 @@ p {
 /*START-PAGE*/
 h2 {
   font-family: "CutMeOut.ttf";
-  padding: 25px;
-  font-size: 3rem;
+  padding: 15px;
+  font-size: 2rem;
   margin: 0;
   background-color: black;
 }
 
 a.collector,
 a.maker {
-  font-size: 2rem;
+  font-size: 1.3rem;
   text-decoration: none;
   color: black;
   padding: 25px;
@@ -57,14 +57,14 @@ a.maker:hover {
 .makers {
   display: flex;
   flex-direction: row;
-  height: 50vh;
+  height: 45vh;
 }
 
 .collector,
 .maker {
   width: 33.33%;
   background-color: white;
-  margin: 0px 25px 0px 25px;
+  margin: 0px 75px 0px 75px;
 }
 
 .arrows {
@@ -77,7 +77,7 @@ a.maker:hover {
 
 p.arrow {
   width: 33.33vw;
-  font-size: 4rem;
+  font-size: 3rem;
   color: red;
 }
 
