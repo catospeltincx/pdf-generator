@@ -5,14 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css" />
-    <title>generate caption book</title>
+    <title>Captions book-maker</title>
   </head>
+  <header>
+    <h2 id="book-makers">book-maker</h2>
+  </header>
   <body>
     <div class="machine">
-      <p>Select <mark>images-X.json</mark>file.</p>
-        </br>
-      <input type="file" id="file" />
-      <iframe width="600" height="900"></iframe>
+      <div class="wrapper">
+        <p class="title">3 &mdash; Captions book-maker</p>
+        <p class="under-title">&emsp;select a <mark>images.json</mark> file</p>
+      </div>
+
+      <div class="wrapper">
+        <input type="file" id="file" />
+        <iframe width="600" height="800"></iframe>
+      </div>
     </div>
     <script src="./main.js"></script>
   </body>
