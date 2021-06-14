@@ -8,21 +8,24 @@
     <title>1-api-page-links</title>
   </head>
   <body>
-    <h1>Search for a Wikipedia Page</h1>
-  </br>
+    <h2 id="data-collectors">data-collector</h2>
+    <p class="title">1 &mdash; <mark>Page Links</mark> book-maker</p>
     <form>
-      <input
-        type="text"
-        name="pageName"
-        placeholder="Page Name"
-        value=""
-      />
-      <input type="submit" value="Run" />
-      <div class="nav">
-        <a href="/machines/2-api-images/index.html">collect all the images of all the page links</a>
-        <a href="/machines/1-pdf-page-links/index.html">create a page-links PDF</a>
-      </div>
+      <input type="text" name="pageName" placeholder="Page Name" value="" />
+      <input class="button" type="submit" value="Run" />
     </form>
+    <div class="arrows">
+      <p class="arrow">&#8601;</p>
+      <p class="arrow">&#8601;</p>
+    </div>
+    <div class="nav">
+      <a class="collector" href="../2-api-images/index.html"
+        >2 &mdash; <mark>Images</mark> collector</a
+      >
+      <a class="maker" href="../2-pdf-images/index.html"
+        >2 &mdash; <mark>Images</mark> book-maker</a
+      >
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>

@@ -9,8 +9,17 @@ body {
 }
 
 p {
+  margin: 0 0 0 25px;
+  color: rgb(0, 0, 0);
+}
+
+/*START-PAGE*/
+h2 {
+  font-family: "CutMeOut.ttf";
+  padding: 25px;
+  font-size: 3rem;
   margin: 0;
-  color: red;
+  background-color: black;
 }
 
 a.collector,
@@ -21,19 +30,20 @@ a.maker {
   padding: 25px;
 }
 
-a.collector:hover,
-a.maker:hover {
+a.collector:hover {
   color: rgb(61, 255, 107);
 }
 
-/*START-PAGE*/
-h2 {
-  font-family: "CutMeOut.ttf";
-  padding: 25px;
-  font-size: 3rem;
-  margin: 0;
+a.maker:hover {
   color: rgb(69, 91, 216);
-  background-color: black;
+}
+
+#data-collectors {
+  color: rgb(61, 255, 107);
+}
+
+#book-makers {
+  color: rgb(69, 91, 216);
 }
 
 .machines {
@@ -68,15 +78,30 @@ h2 {
 p.arrow {
   width: 33.33vw;
   font-size: 4rem;
+  color: red;
 }
 
 /* COLLECTORS, MAKERS */
-h1 {
-  margin: 25px 0 0 25px;
+p.title {
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+  padding-top: 25px;
 }
 
 input {
-  margin: 25px 0 0 25px;
+  margin: 25px 0 25px 25px;
+  border: 2px inset;
+  font-family: monospace;
+  width: 15em;
+  padding: 1px 0px 1px 0px;
+  background-color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+input.button {
+  border: outset;
 }
 
 .nav {
