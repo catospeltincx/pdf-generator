@@ -84,6 +84,10 @@ p.arrow {
 }
 
 /* COLLECTORS */
+.home-machines {
+  background-color: white;
+}
+
 #arrows-single {
   top: 50px;
   left: 350px;
