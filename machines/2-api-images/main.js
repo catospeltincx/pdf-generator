@@ -26,7 +26,7 @@ async function loadImagesForPages(pages) {
   // console.log(pages);
   const allImageObjects = [];
   //voor elke pagina alle images loaden
-  for (const pageName of pages.slice(0, 100)) {
+  for (const pageName of pages) {
     const imageObjects = await loadImagesForPage(pageName);
     //om lijst in lijst te vermijden
     //steek de elementen van de lijst erin
