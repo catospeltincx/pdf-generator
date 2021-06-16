@@ -18,15 +18,15 @@ async function makePdf(pageLinks) {
   //.slice om niet alles te weergeven
   for (const pageLink of pageLinks) {
     //de page-link
-    doc.font("Courier").fontSize(25).text(pageLink, x, y, { width: 180 });
+    doc.font("Times-Roman").fontSize(80).text(pageLink, x, y, { width: 1191 });
 
     //elke kolom is 50px breed
-    x += 200;
+    x += 1191;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 20;
     if (x >= 750) {
       x = 25;
-      y += 130;
+      y += 842;
       //deze moet korter zijn dan de lengte van de pagina
       //lengte van pagina
       if (y >= 400) {
@@ -59,7 +59,7 @@ document.getElementById("file").addEventListener("change", (e) => {
 //om snel te testen
 //met een json op in public map
 
-// const jsonUrl = "/data/PageLinks.json";
+// const jsonUrl = "/data/page-links-to-test.json";
 // fetch(jsonUrl)
 //   .then((res) => res.json())
 //   .then((json) => makePdf(json));

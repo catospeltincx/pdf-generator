@@ -16,7 +16,7 @@ async function makePdf(images) {
 
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 50)) {
+  for (const imageObject of images.slice(0, 1000)) {
     const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
@@ -24,16 +24,16 @@ async function makePdf(images) {
     //de caption
     doc
       .font("Times-Roman")
-      .fontSize(45)
-      .text(imageObject.caption, x + 10, y + 10, { width: 470 });
+      .fontSize(15)
+      .text(imageObject.caption, x + 10, y + 10, { width: 595 });
 
     //elke kolom is 50px breed
-    x += 595;
+    x += 100;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 5;
     if (x >= 1100) {
       x = 50;
-      y += 842;
+      y += 50;
       //lzngte van pagina
       if (y >= 800) {
         y = 0;

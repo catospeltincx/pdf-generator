@@ -17,7 +17,7 @@ async function makePdf(images) {
 
   //
   //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 50)) {
+  for (const imageObject of images.slice(0, 1000)) {
     const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
@@ -26,10 +26,10 @@ async function makePdf(images) {
     //doc.fontSize(8).text(imageObject.caption, x, y, { width: 100 });
 
     //breedte kolom
-    x += 1191;
+    x += 15;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 7;
-    if (x >= 1100) {
+    if (x >= 450) {
       x = 0;
       //hoogte rij
       y += 842;
