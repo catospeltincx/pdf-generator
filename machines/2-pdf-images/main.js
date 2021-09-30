@@ -6,7 +6,7 @@ import { loadImage } from "../../utils/image";
 async function makePdf(images) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [1191, 842],
+    size: [595.28, 841.89],
     //margins: { top: 50, bottom: 50, left: 72, right: 72 },
   });
 
@@ -21,18 +21,18 @@ async function makePdf(images) {
     const image = await loadImage(imageObject.src);
     // console.log("image");
     //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, x, y, { width: 1191 });
+    doc.image(image, x, y, { width: 297 });
     //de caption
     //doc.fontSize(8).text(imageObject.caption, x, y, { width: 100 });
 
     //breedte kolom
-    x += 15;
+    x += 297;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 7;
     if (x >= 450) {
       x = 0;
       //hoogte rij
-      y += 842;
+      y += 250;
       //lengte van pagina
       if (y >= 800) {
         y = 0;

@@ -6,7 +6,7 @@ import blobStream from "blob-stream";
 async function makePdf(pageLinks) {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [842, 595],
+    size: [419.53, 595.28],
     //margins: { top: 50, bottom: 50, left: 72, right: 72 },
   });
 
@@ -18,18 +18,18 @@ async function makePdf(pageLinks) {
   //.slice om niet alles te weergeven
   for (const pageLink of pageLinks) {
     //de page-link
-    doc.font("Times-Roman").fontSize(80).text(pageLink, x, y, { width: 1191 });
+    doc.font("Times-Roman").fontSize(8.5).text(pageLink, x, y, { width: 1191 });
 
     //elke kolom is 50px breed
-    x += 1191;
+    x += 180;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 20;
-    if (x >= 750) {
+    if (x >= 300) {
       x = 25;
-      y += 842;
+      y += 9;
       //deze moet korter zijn dan de lengte van de pagina
       //lengte van pagina
-      if (y >= 400) {
+      if (y >= 530) {
         y = 25;
         doc.addPage();
       }
