@@ -1,44 +1,40 @@
 import "regenerator-runtime/runtime";
 import PDFDocument from "pdfkit";
 import blobStream from "blob-stream";
-import { loadImage } from "../../utils/image";
+import { loadImage } from "/utils/image";
 
-async function makePdf(images) {
+console.log(PDFDocument);
+
+async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [1191, 842],
-    //margins: { top: 50, bottom: 50, left: 72, right: 72 },
+    size: [421, 595],
   });
 
   const stream = doc.pipe(blobStream());
 
-  let x = 0;
-  let y = 0;
+  // const res = await fetch("/data/cupcake-ipsum.txt");
+  // const text = await res.text();
 
-  //
-  //.slice om niet alles te weergeven
-  for (const imageObject of images.slice(0, 1000)) {
-    const image = await loadImage(imageObject.src);
-    // console.log("image");
-    //wanneer x en y meegegeven, blijven ze plakken
-    doc.image(image, x, y, { width: 1191 });
-    //de caption
-    //doc.fontSize(8).text(imageObject.caption, x, y, { width: 100 });
+  // const lines = text.split("\n");
+  // console.log(lines);
 
-    //breedte kolom
-    x += 15;
-    //de afbeeldingen schuin naar beneden laten gaan
-    //y += 7;
-    if (x >= 450) {
-      x = 0;
-      //hoogte rij
-      y += 842;
-      //lengte van pagina
-      if (y >= 800) {
-        y = 0;
-        doc.addPage();
-      }
-    }
+  // for (const line of lines) {
+  //   if (line.trim().length === 0) continue;
+  //   doc.text(line);
+  //   doc.moveDown();
+  // }
+
+  // const image = await loadImage("/images/road.jpg");
+  // doc.image(image, 0, 15, { width: 300 });
+  // doc.image(image, 0, 100, { width: 512 });
+
+  const res = await fetch("/data/zozmer.json");
+  const images = await res.json();
+  //console.log(bikes);
+  for (const image of images.slice(0, 10)) {
+    const Img = await loadImage("/images/zozmer/" + image.image);
+    doc.image(Img, { width: 100 });
   }
 
   // end and display the document in the iframe to the right
@@ -48,23 +44,4 @@ async function makePdf(images) {
   });
 }
 
-//dealen met json lijst images
-//
-document.getElementById("file").addEventListener("change", (e) => {
-  //we nemen de file
-  const file = e.target.files[0];
-  //de data van de json
-  const jsonUrl = URL.createObjectURL(file);
-  //als de json geladen is, is er een lijst van alle images
-  fetch(jsonUrl)
-    .then((res) => res.json())
-    .then((json) => makePdf(json));
-});
-
-//om snel te testen
-//met een json op in public map
-
-// const jsonUrl = "/data/book-images.json";
-// fetch(jsonUrl)
-//   .then((res) => res.json())
-//   .then((json) => makePdf(json));
+makePdf();
