@@ -13,28 +13,30 @@ async function makePdf() {
 
   const stream = doc.pipe(blobStream());
 
-  // const res = await fetch("/data/cupcake-ipsum.txt");
-  // const text = await res.text();
-
-  // const lines = text.split("\n");
-  // console.log(lines);
-
-  // for (const line of lines) {
-  //   if (line.trim().length === 0) continue;
-  //   doc.text(line);
-  //   doc.moveDown();
-  // }
-
-  // const image = await loadImage("/images/road.jpg");
-  // doc.image(image, 0, 15, { width: 300 });
-  // doc.image(image, 0, 100, { width: 512 });
+  let x = 0;
+  let y = 0;
 
   const res = await fetch("/data/zozmer.json");
   const images = await res.json();
   //console.log(bikes);
   for (const image of images.slice(0, 10)) {
     const Img = await loadImage("/images/zozmer/" + image.image);
-    doc.image(Img, { width: 100 });
+    doc.image(Img, x, y, { width: 100 });
+
+    //breedte kolom
+    x += 297;
+    //de afbeeldingen schuin naar beneden laten gaan
+    //y += 7;
+    if (x >= 450) {
+      x = 0;
+      //hoogte rij
+      y += 250;
+      //lengte van pagina
+      if (y >= 800) {
+        y = 0;
+        doc.addPage();
+      }
+    }
   }
 
   // end and display the document in the iframe to the right
