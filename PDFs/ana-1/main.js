@@ -8,12 +8,12 @@ console.log(PDFDocument);
 async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [421, 595],
+    size: "A4",
   });
 
   const stream = doc.pipe(blobStream());
 
-  let x = 0;
+  let x = 297.63;
   let y = 0;
 
   const res = await fetch("/data/zozmer.json");
@@ -21,18 +21,18 @@ async function makePdf() {
   //console.log(bikes);
   for (const image of images.slice(0, 10)) {
     const Img = await loadImage("/images/zozmer/" + image.image);
-    doc.image(Img, x, y, { width: 100 });
+    doc.image(Img, x, y, { width: 280.63 });
 
     //breedte kolom
-    x += 297;
+    x += 280.63;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 7;
-    if (x >= 450) {
-      x = 0;
+    if (x >= 280.63) {
+      x = 297.63;
       //hoogte rij
-      y += 250;
+      y += 420.945;
       //lengte van pagina
-      if (y >= 800) {
+      if (y >= 835.89) {
         y = 0;
         doc.addPage();
       }
