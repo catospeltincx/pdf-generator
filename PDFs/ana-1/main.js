@@ -9,17 +9,18 @@ async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
     size: "A4",
+    margins: { top: 0, left: 0, bottom: 0, right: 0 },
   });
 
   const stream = doc.pipe(blobStream());
 
-  let x = 297.63;
+  let x = 17.18;
   let y = 0;
 
   const res = await fetch("/data/zozmer.json");
   const images = await res.json();
   //console.log(bikes);
-  for (const image of images.slice(0, 10)) {
+  for (const image of images.slice(0, 74)) {
     const Img = await loadImage("/images/zozmer/" + image.image);
     doc.image(Img, x, y, { width: 280.63 });
 
@@ -27,8 +28,8 @@ async function makePdf() {
     x += 280.63;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 7;
-    if (x >= 280.63) {
-      x = 297.63;
+    if (x >= 450) {
+      x = 17.18;
       //hoogte rij
       y += 420.945;
       //lengte van pagina
@@ -38,6 +39,8 @@ async function makePdf() {
       }
     }
   }
+
+  doc.font("Times-Roman").fontSize(20).text("Zomer 2021", 368, 440);
 
   // end and display the document in the iframe to the right
   doc.end();
