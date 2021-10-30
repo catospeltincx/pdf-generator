@@ -19,7 +19,7 @@ async function makePdf() {
   const res = await fetch("/data/chiara.json");
   const images = await res.json();
   //console.log(bikes);
-  for (const image of images.slice(0, 92)) {
+  for (const image of images.slice(0, 155)) {
     const Img = await loadImage("/images/Chiara/" + image.img);
     doc.image(Img, x, y, { width: 297.64 });
 
