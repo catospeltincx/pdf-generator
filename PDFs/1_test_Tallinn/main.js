@@ -8,7 +8,7 @@ console.log(PDFDocument);
 async function makePdf() {
   const iframe = document.querySelector("iframe");
   const doc = new PDFDocument({
-    size: [227, 312],
+    size: [419.53, 595.28],
     margins: { top: 0, left: 0, bottom: 0, right: 0 },
   });
   const stream = doc.pipe(blobStream());
@@ -16,45 +16,44 @@ async function makePdf() {
   let x = 0;
   let y = 0;
 
-  const res = await fetch("/data/cuts_snow.json");
-  const snows = await res.json();
+  const pes = await fetch("/data/cuts_var.json");
+  const objects = await pes.json();
 
-  for (const snow of snows) {
-    const Snow = await loadImage("/images/cuts_snow/" + snow.img);
-    doc.image(Snow, x, y, { width: 200 });
+  const res = await fetch("/data/cuts_var.json");
+  const cuts = await res.json();
+
+  for (const cut of cuts.slice(0, 3)) {
+    const Layer0 = await loadImage("/images/cuts_layer0/" + cut.img);
+    doc.image(Layer0, x, y, { width: 419.53 });
     //breedte kolom
-    x += 70;
+    x += 419.53;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 7;
-    if (x >= 150) {
+    if (x >= 419.53) {
       x = 0;
       //hoogte rij
-      y += 50;
+      y += 595.28;
       //lengte van pagina
-      if (y >= 312) {
+      if (y >= 0) {
         y = 0;
         doc.addPage();
       }
     }
   }
 
-  const pes = await fetch("/data/cuts_all.json");
-  const cuts = await pes.json();
-  for (const cut of cuts) {
-    const Cut = await loadImage("/images/cuts_all/" + cut.img);
+  for (const object of objects.slice(0, 3)) {
+    const Layer1 = await loadImage("/images/cuts_layer1/" + object.img);
+    doc.image(Layer1, x, y, { width: 419.53 });
 
-    doc.image(Cut, x, y, { width: 200 });
-
-    //breedte kolom
-    x += 70;
+    x += 419.53;
     //de afbeeldingen schuin naar beneden laten gaan
     //y += 7;
-    if (x >= 150) {
+    if (x >= 419.53) {
       x = 0;
       //hoogte rij
-      y += 50;
+      y += 1000;
       //lengte van pagina
-      if (y >= 312) {
+      if (y >= 0) {
         y = 0;
         doc.addPage();
       }
