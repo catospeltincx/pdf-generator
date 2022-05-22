@@ -29,7 +29,7 @@ async function makePdf() {
 
   //define amount of boxes
   //define amount of pages
-  const bookPages = 20;
+  const bookPages = 5;
   const boxCount = 20;
   const boxes = [];
 
@@ -41,114 +41,20 @@ async function makePdf() {
   }
 
   //the grid
-  const width = [
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-  ];
-  const height = [
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-    randInt(50, 500),
-  ];
-  const x0 = [
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-    randInt(0, 700),
-  ];
-
-  const y0 = [
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-    randInt(0, 400),
-  ];
-
   function boxWidth() {
-    let minmax = randInt(0, width.length - 1);
-    return width[minmax];
+    return randInt(0, 700);
   }
 
   function boxHeight() {
-    let minmax = randInt(0, height.length - 1);
-    return height[minmax];
+    return randInt(0, 400);
   }
 
   function boxX() {
-    let minmax = randInt(0, x0.length - 1);
-    return x0[minmax];
+    return randInt(0, 700);
   }
 
   function boxY() {
-    let minmax = randInt(0, y0.length - 1);
-    return y0[minmax];
+    return randInt(0, 400);
   }
 
   let articleIndex = 0;
@@ -187,7 +93,7 @@ async function makePdf() {
     let grad = doc.linearGradient(50, 500);
     grad.stop(0, colorize()).stop(1, colorize());
 
-    doc.rect(0, 0, 960, 540).fill(grad);
+    doc.rect(0, 0, 400, 540).fill(grad);
 
     //input json
     doc.image(Layer0, box.x0, box.y0, { width: box.width, height: box.height });
