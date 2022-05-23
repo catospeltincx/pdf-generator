@@ -11,7 +11,7 @@ async function makePdf() {
   const stream = doc.pipe(blobStream());
 
   //haalt de data uit de juiste json-file
-  const res = await fetch("/data/revision-chat.json");
+  const res = await fetch("/data/girl-1-text.json");
   const histories = await res.json();
 
   //Ik begin bij de eerste versie van een Wikipedia pagina
